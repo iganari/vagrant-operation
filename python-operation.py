@@ -3,18 +3,42 @@
 
 # print('Hello World')
 
-### /tmpに書き込み権限があるか確認する
+import os
+
 
 def chk_tmp_permission():
-    import os
     
     chk_write = os.access('/opt', os.W_OK)
 
     if chk_write == True:
         print('OK. You have Write Permisson')
+        # pass
     else:
         print('NO, You do not have Write Permisson')
+        sys.exit(0)
 
+def chk_vbscript():
+    import sys
+    
+    chk_vb_script = os.path.isfile('/usr/bin/VBoxManage')
+
+    if chk_vb_script == True:
+        pass
+    else:
+        print('Maybe, You do not install Virtualbox (Not lock up VBoxManage !)')
+        sys.exit(0)
 
 if __name__ == '__main__':
+
+    # /tmpに書き込み権限があるか確認する
     chk_tmp_permission()
+
+    # Vagrantがインストールしてあるか確認する
+    # `/usr/bin/VBoxManage` があることを確認する
+    chk_vbscript()
+
+
+
+
+    # test
+    print('END')
