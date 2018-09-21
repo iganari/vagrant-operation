@@ -7,18 +7,12 @@
 + clone
 
 ```
-git clone hoghoge
-cd hogehoge
-```
-
-+ 実行権限付与
-
-```
-chmod +x operation.sh
+git clone https://github.com/iganari/vagrant-operation.git
+cd vagrant-operation
 ```
 
 + 実行テスト
 
 ```
-./operation.sh
+sh operation.sh
 ```
