@@ -21,3 +21,5 @@ sh operation.sh
 
 + shellでしか意図する挙動をしない
     + ---> Python3で書き直す :snake:
++ Vagrantがそもそもインストールしているかの判定が入っていない
+    + ゆくゆく実装予定 ---> issueにしておく
