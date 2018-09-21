@@ -33,8 +33,8 @@ if __name__ == '__main__':
     # /tmpに書き込み権限があるか確認する
     chk_tmp_permission()
 
-    # Vagrantがインストールしてあるか確認する
-    # `/usr/bin/VBoxManage` があることを確認する
+    # VirtualBoxがインストールしてあるか確認する
+    # 具体的には '/usr/bin/VBoxManage' が存在することを確認する
     chk_vbscript()
 
 
