@@ -16,3 +16,8 @@ cd vagrant-operation
 ```
 sh operation.sh
 ```
+
+## 現状のイケてないとこ :no_good:
+
++ shellでしか意図する挙動をしない
+    + ---> Python3で書き直す :snake:
