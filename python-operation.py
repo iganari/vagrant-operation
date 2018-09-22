@@ -21,12 +21,18 @@ def chk_vbscript():
     import sys
     
     chk_vb_script = os.path.isfile('/usr/bin/VBoxManage')
+    vb_script_ubuntu = '/usr/bin/VBoxManage'
+    vb_script_macos  = '/usr/local/bin/VboxManage'
+    paths = [ "/usr/bin/", "/usr/local/bin/" ]
 
-    if chk_vb_script == True:
-        pass
-    else:
-        print('Maybe, You do not install Virtualbox (Not lock up VBoxManage !)')
-        sys.exit(0)
+    for path in paths: 
+        print(path, 'VBoxManage')
+
+        # if chk_vb_script == True:
+        #     pass
+        # else:
+        #     print('Maybe, You do not install Virtualbox (Not lock up VBoxManage !)')
+        #     sys.exit(0)
 
 if __name__ == '__main__':
 
