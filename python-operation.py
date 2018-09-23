@@ -24,7 +24,7 @@ def chk_vbscript():
     for path in paths: 
         vm_path = path + 'VBoxManage'
         # print(vm_path)
-        if vm_path == True:
+        if os.path.isfile(vm_path) == True:
             break
         else:
             print('Maybe, You do not install Virtualbox ( We could not find ' + vm_path + ' )')
