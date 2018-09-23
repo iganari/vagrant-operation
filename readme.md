@@ -34,5 +34,6 @@ sh operation.sh
 
 ```
 cd virtualbox-operation
+python3 -m venv .vb
 source .vb/bin/activate
 ```
