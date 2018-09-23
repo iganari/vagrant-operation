@@ -5,6 +5,7 @@
 
 import os
 import sys
+import pdb
 
 def chk_tmp_permission():
     
@@ -17,20 +18,32 @@ def chk_tmp_permission():
         print('NO, You do not have Write Permisson')
         sys.exit(0)
 
-def chk_vbscript():
+def chk_vb_command():
+    import subprocess
     
     paths = [ "/usr/bin/", "/usr/local/bin/" ]
 
     for path in paths: 
-        vm_path = path + 'VBoxManage'
-        # print(vm_path)
-        if os.path.isfile(vm_path) == True:
-            break
+        vb_cmd = path + 'VBoxManage'
+        if os.path.isfile(vb_cmd) == True:
+            print('OK')
+            break    # After this, vb_cmd exists in reality.
         else:
-            print('Maybe, You do not install Virtualbox ( We could not find ' + vm_path + ' )')
+            print('Maybe, You do not install Virtualbox ( We could not find ' + vb_cmd + ' )')
     else:
         print('You do not install Virtualbox. Bye!')
         sys.exit(0)
+
+# def exe_vm():
+#     import subprocess
+#    
+#     print(vb_cmd)
+#     try:
+#       # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
+#       res = subprocess.run(["vb_cmd", "list", "vms"], stdout=subprocess.PIPE)
+#       sys.stdout.buffer.write(res.stdout)
+#     except:
+#       print('Error')
 
 if __name__ == '__main__':
 
@@ -38,9 +51,11 @@ if __name__ == '__main__':
     chk_tmp_permission()
 
     # Check if VBoxManage is installed
-    chk_vbscript()
+    chk_vb_command()
 
-
+    # 
+    # pdb.set_trace()
+    # exe_vm()
 
 
     # test
