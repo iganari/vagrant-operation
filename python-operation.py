@@ -4,11 +4,11 @@
 # print('Hello World')
 
 import os
-
+import sys
 
 def chk_tmp_permission():
     
-    chk_write = os.access('/opt', os.W_OK)
+    chk_write = os.access('/tmp', os.W_OK)
 
     if chk_write == True:
         print('OK. You have Write Permisson')
@@ -18,7 +18,6 @@ def chk_tmp_permission():
         sys.exit(0)
 
 def chk_vbscript():
-    import sys
     
     paths = [ "/usr/bin/", "/usr/local/bin/" ]
 
