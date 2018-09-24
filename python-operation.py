@@ -39,7 +39,7 @@ def chk_vb_command():
 
 def exe_vm():
     chk_vb_command()
-
+    
     import subprocess
    
     # print(vb_cmd)
@@ -56,7 +56,7 @@ if __name__ == '__main__':
     chk_tmp_permission()
 
     # Check if VBoxManage is installed
-    chk_vb_command()
+    # chk_vb_command()
 
     # 
     # pdb.set_trace()
