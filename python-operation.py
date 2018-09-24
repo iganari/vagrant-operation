@@ -26,24 +26,29 @@ def chk_vb_command():
     for path in paths: 
         vb_cmd = path + 'VBoxManage'
         if os.path.isfile(vb_cmd) == True:
-            print('OK')
+            # print('OK')
+            # print(vb_cmd)
             break    # After this, vb_cmd exists in reality.
         else:
             print('Maybe, You do not install Virtualbox ( We could not find ' + vb_cmd + ' )')
     else:
         print('You do not install Virtualbox. Bye!')
         sys.exit(0)
+    print(vb_cmd)
+    return chk_vb_command
 
-# def exe_vm():
-#     import subprocess
-#    
-#     print(vb_cmd)
-#     try:
-#       # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
-#       res = subprocess.run(["vb_cmd", "list", "vms"], stdout=subprocess.PIPE)
-#       sys.stdout.buffer.write(res.stdout)
-#     except:
-#       print('Error')
+def exe_vm():
+    chk_vb_command()
+
+    import subprocess
+   
+    # print(vb_cmd)
+    # try:
+    #   # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
+    #   res = subprocess.run(["vb_cmd", "list", "vms"], stdout=subprocess.PIPE)
+    #   sys.stdout.buffer.write(res.stdout)
+    # except:
+    #   print('Error')
 
 if __name__ == '__main__':
 
@@ -55,7 +60,7 @@ if __name__ == '__main__':
 
     # 
     # pdb.set_trace()
-    # exe_vm()
+    exe_vm()
 
 
     # test
