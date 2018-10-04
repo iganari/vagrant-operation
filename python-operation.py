@@ -43,12 +43,12 @@ def exe_vm():
 
     import subprocess
    
-    # try:
-    #   # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
-    #   res = subprocess.run(["vb_cmd", "list", "vms"], stdout=subprocess.PIPE)
-    #   sys.stdout.buffer.write(res.stdout)
-    # except:
-    #   print('Error')
+    try:
+      res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
+      # res = subprocess.run(["vb_cmd", "list", "vms"], stdout=subprocess.PIPE)
+      sys.stdout.buffer.write(res.stdout)
+    except:
+      print('Error')
 
 if __name__ == '__main__':
 
