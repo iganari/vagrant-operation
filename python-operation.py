@@ -34,15 +34,15 @@ def chk_vb_command():
     else:
         print('You do not install Virtualbox. Bye!')
         sys.exit(0)
-    print(vb_cmd)
-    return chk_vb_command
+    # print(vb_cmd)
+    return vb_cmd
 
 def exe_vm():
-    chk_vb_command()
-    
+    cmd = chk_vb_command()
+    print(cmd)    
+
     import subprocess
    
-    # print(vb_cmd)
     # try:
     #   # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
     #   res = subprocess.run(["vb_cmd", "list", "vms"], stdout=subprocess.PIPE)
