@@ -44,9 +44,14 @@ def exe_vm():
     import subprocess
    
     try:
-      res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
-      # res = subprocess.run(["vb_cmd", "list", "vms"], stdout=subprocess.PIPE)
-      sys.stdout.buffer.write(res.stdout)
+      # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
+      # res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
+      res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
+      sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
+
+
+         
+
     except:
       print('Error')
 
