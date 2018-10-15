@@ -50,3 +50,5 @@ source .vb/bin/activate
 ### 出来ないこと
 
 + 上記以外
+
+VirtualBoxやVagrantとうまくやって行きたいので、敢えて権限・出来ることを絞っています
