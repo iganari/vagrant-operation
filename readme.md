@@ -28,7 +28,7 @@ sh operation.sh
 
 ### :warning: 注意
 
-+ Python 3.x でのみ動作確認しています
++ Python 3.x でのみ想定しています
 
 ### 使い方
 
