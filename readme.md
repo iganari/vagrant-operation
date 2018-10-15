@@ -28,7 +28,7 @@ sh operation.sh
 
 ### :warning: 注意
 
-+ Python 3.x でのみ動作確認しています
++ Python 3.x でのみ想定しています
 
 ### 使い方
 
@@ -37,3 +37,18 @@ cd virtualbox-operation
 python3 -m venv .vb
 source .vb/bin/activate
 ```
+
+
+## 出来ること・出来ないこと
+
+### 出来ること
+
++ ローカル内のVMの起動(ヘッドレス)
++ ローカル内のVMの一時停止
++ ローカル内の指定したVMのVagrantfileの探しだし
+
+### 出来ないこと
+
++ 上記以外
+
+VirtualBoxやVagrantとうまくやって行きたいので、敢えて権限・出来ることを絞っています
