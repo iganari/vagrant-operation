@@ -37,3 +37,16 @@ cd virtualbox-operation
 python3 -m venv .vb
 source .vb/bin/activate
 ```
+
+
+## 出来ること・出来ないこと
+
+### 出来ること
+
++ ローカル内のVMの起動(ヘッドレス)
++ ローカル内のVMの一時停止
++ ローカル内の指定したVMのVagrantfileの探しだし
+
+### 出来ないこと
+
++ 上記以外
