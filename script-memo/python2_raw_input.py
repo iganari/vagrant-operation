@@ -5,4 +5,4 @@ print u'Plz tell me your first name'
 
 your_name = raw_input('>> ')
 
-print your_name
+print "Hello !! "+your_name
