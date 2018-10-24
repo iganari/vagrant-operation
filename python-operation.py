@@ -48,12 +48,14 @@ def exe_vm():
       # res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
       res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
       sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
-
-
-         
-
     except:
       print('Error')
+
+def test_print():
+    print('## Virtual Box List ##')
+    print('-------------------------------------------------------')
+    print(' <--- [   ALL VM   ]      |    [   Running VM   ] ---> ')     
+    print('-------------------------------------------------------')
 
 if __name__ == '__main__':
 
@@ -67,6 +69,7 @@ if __name__ == '__main__':
     # pdb.set_trace()
     exe_vm()
 
-
+    # test print
+    test_print()
     # test
     print('END')
