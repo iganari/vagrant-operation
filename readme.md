@@ -41,7 +41,7 @@ bash bash-operation.sh
 + alias vb='bash ${vagrant-operaionのPATH}/bash-operaion.sh'
 ```
 
-+ `.bashec` の再読み込み
++ `~/.bashec` の再読み込み
 
 ```
 source ~/.bashrc
@@ -64,7 +64,7 @@ source .vb/bin/activate
 
 # 現状のイケてないとこ :no_good:
 
-+ BASH版しか無い
++ Bash版しか無い
     + ---> Python3でも作成中 :snake:
 + Virtualbox/Vagrantがそもそもインストールしているかの判定が入っていない
     + ゆくゆく実装予定 ---> issueにしておく
