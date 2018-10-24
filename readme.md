@@ -1,6 +1,6 @@
 # Virtualbox Operation
 
-+ [Bash版]
++ [Bash版](https://github.com/iganari/virtualbox-operation/blob/master/readme.md#bash版について)
 + [Python版]
 
 ## 出来ること・出来ないこと
