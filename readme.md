@@ -1,8 +1,9 @@
 # Vagrant Operation
 
-:warning: WIP :warning:
++ [BASH版]
++ [Python版]
 
-## 使い方
+## BASH版の使い方
 
 + clone
 
@@ -17,10 +18,22 @@ cd vagrant-operation
 bash bash-operation.sh
 ```
 
++ 端末の `~/.bashrc` に記載する
+
+```diff
++ alias vb='bash ${vagrant-operaionのPATH}/bash-operaion.sh'
+```
+
++ `.bashec` の再読み込み
+
+```
+source ~/.bashrc
+```
+
 ## 現状のイケてないとこ :no_good:
 
-+ shellでしか意図する挙動をしない
-    + ---> Python3で書き直す :snake:
++ BASH版しか無い
+    + ---> Python3でも作成中 :snake:
 + Vagrantがそもそもインストールしているかの判定が入っていない
     + ゆくゆく実装予定 ---> issueにしておく
 
