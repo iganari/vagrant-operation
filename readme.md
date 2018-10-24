@@ -65,7 +65,10 @@ source .vb/bin/activate
 # 現状のイケてないとこ :no_good:
 
 + Bash版しか無い
-    + Python3を作成中 :snake:
-    + Golangはissue化 :memo:
+    + Python3
+        + 作成中 :snake:
+    + Golang
+        + issue化 :memo:
 + Virtualbox/Vagrantがそもそもインストールしているかの判定が入っていない
-    + ゆくゆく実装予定 ---> issueにしておく
+    + ゆくゆく実装予定
+        + issue化 :memo:
