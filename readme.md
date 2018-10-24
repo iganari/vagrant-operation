@@ -66,9 +66,9 @@ source .vb/bin/activate
 
 + Bash版しか無い
     + Python3
-        + 作成中 :snake:
+        + 作成中 [:snake:](https://github.com/iganari/virtualbox-operation/issues/2)
     + Golang
-        + issue化 :memo:
+        + issue化 [:memo:](https://github.com/iganari/virtualbox-operation/issues/7)
 + Virtualbox/Vagrantがそもそもインストールしているかの判定が入っていない
     + ゆくゆく実装予定
-        + issue化 :memo:
+        + issue化 [:memo:](https://github.com/iganari/virtualbox-operation/issues/3)
