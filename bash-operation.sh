@@ -25,6 +25,10 @@ search_vgfile()
   for i in `find ~/ -name 'Vagrantfile' | grep -v VirtualBox`
     do
       grep -r "${1}" ${i}
+      # echo $?
+      if [ $? = "0" ];then
+        echo "path =>" $i
+      fi
     done
 }
 
