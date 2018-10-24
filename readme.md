@@ -1,9 +1,26 @@
-# Vagrant Operation
+# Virtualbox Operation
 
 + [Bash版]
 + [Python版]
 
-## Bash版の使い方
+## 出来ること・出来ないこと
+
+### 出来ること :blush:
+
++ start
+    + ローカル内のVMの起動(ヘッドレス)
++ stop
+    + ローカル内のVMの一時停止
++ search
+    + ローカル内の指定したVMのVagrantfileの探しだし
+
+### 出来ないこと :cry:
+
++ 上記以外
+    + :warning: VirtualBoxやVagrantとうまくやって行きたいので、敢えて出来ることを絞っています
+
+
+## Bash版について
 
 + clone
 
@@ -30,17 +47,11 @@ bash bash-operation.sh
 source ~/.bashrc
 ```
 
-## 現状のイケてないとこ :no_good:
-
-+ BASH版しか無い
-    + ---> Python3でも作成中 :snake:
-+ Vagrantがそもそもインストールしているかの判定が入っていない
-    + ゆくゆく実装予定 ---> issueにしておく
-
-## [リファクタ中] Python Versionについて
+## Python版について
 
 ### :warning: 注意
 
++ 作成中です :bow:
 + Python 3.x でのみ想定しています
 
 ### 使い方
@@ -51,19 +62,9 @@ python3 -m venv .vb
 source .vb/bin/activate
 ```
 
+# 現状のイケてないとこ :no_good:
 
-## 出来ること・出来ないこと
-
-### 出来ること
-
-+ start
-    + ローカル内のVMの起動(ヘッドレス)
-+ stop
-    + ローカル内のVMの一時停止
-+ search
-    + ローカル内の指定したVMのVagrantfileの探しだし
-
-### 出来ないこと
-
-+ 上記以外
-    + :warning: VirtualBoxやVagrantとうまくやって行きたいので、敢えて権限・出来ることを絞っています
++ BASH版しか無い
+    + ---> Python3でも作成中 :snake:
++ Virtualbox/Vagrantがそもそもインストールしているかの判定が入っていない
+    + ゆくゆく実装予定 ---> issueにしておく
