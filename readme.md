@@ -1,9 +1,9 @@
 # Vagrant Operation
 
-+ [BASH版]
++ [Bash版]
 + [Python版]
 
-## BASH版の使い方
+## Bash版の使い方
 
 + clone
 
