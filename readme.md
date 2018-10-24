@@ -14,7 +14,7 @@ cd vagrant-operation
 + 実行テスト
 
 ```
-sh operation.sh
+bash bash-operation.sh
 ```
 
 ## 現状のイケてないとこ :no_good:
