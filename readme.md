@@ -1,8 +1,26 @@
-# Vagrant Operation
+# Virtualbox Operation
 
-:warning: WIP :warning:
++ [Bash版](https://github.com/iganari/virtualbox-operation/blob/master/readme.md#bash版について)
++ [Python版]
 
-## 使い方
+## 出来ること・出来ないこと
+
+### 出来ること :blush:
+
++ start
+    + ローカル内のVMの起動(ヘッドレス)
++ stop
+    + ローカル内のVMの一時停止
++ search
+    + ローカル内の指定したVMのVagrantfileの探しだし
+
+### 出来ないこと :cry:
+
++ 上記以外
+    + :warning: VirtualBoxやVagrantとうまくやって行きたいので、敢えて出来ることを絞っています
+
+
+## Bash版について
 
 + clone
 
@@ -17,17 +35,23 @@ cd vagrant-operation
 bash bash-operation.sh
 ```
 
-## 現状のイケてないとこ :no_good:
++ 端末の `~/.bashrc` に記載する
 
-+ shellでしか意図する挙動をしない
-    + ---> Python3で書き直す :snake:
-+ Vagrantがそもそもインストールしているかの判定が入っていない
-    + ゆくゆく実装予定 ---> issueにしておく
+```diff
++ alias vb='bash ${vagrant-operaionのPATH}/bash-operaion.sh'
+```
 
-## [リファクタ中] Python Versionについて
++ `~/.bashec` の再読み込み
+
+```
+source ~/.bashrc
+```
+
+## Python版について
 
 ### :warning: 注意
 
++ 作成中です :bow:
 + Python 3.x でのみ想定しています
 
 ### 使い方
@@ -38,19 +62,13 @@ python3 -m venv .vb
 source .vb/bin/activate
 ```
 
+# 現状のイケてないとこ :no_good:
 
-## 出来ること・出来ないこと
-
-### 出来ること
-
-+ start
-    + ローカル内のVMの起動(ヘッドレス)
-+ stop
-    + ローカル内のVMの一時停止
-+ search
-    + ローカル内の指定したVMのVagrantfileの探しだし
-
-### 出来ないこと
-
-+ 上記以外
-    + :warning: VirtualBoxやVagrantとうまくやって行きたいので、敢えて権限・出来ることを絞っています
++ Bash版しか無い
+    + Python3
+        + 作成中 :snake:
+    + Golang
+        + issue化 :memo:
++ Virtualbox/Vagrantがそもそもインストールしているかの判定が入っていない
+    + ゆくゆく実装予定
+        + issue化 :memo:
