@@ -52,10 +52,10 @@ def exe_vm():
       print('Error')
 
 def test_print():
-    print('## Virtual Box List ##')
+    print('\n\n## Virtual Box List ##\n')
     print('-------------------------------------------------------')
     print(' <--- [   ALL VM   ]      |    [   Running VM   ] ---> ')     
-    print('-------------------------------------------------------')
+    print('-------------------------------------------------------\n')
 
 if __name__ == '__main__':
 
@@ -73,3 +73,4 @@ if __name__ == '__main__':
     test_print()
     # test
     print('END')
+
