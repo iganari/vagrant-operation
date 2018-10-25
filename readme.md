@@ -22,6 +22,8 @@
 
 ## Bash版について
 
+### 使い方
+
 + clone
 
 ```
@@ -56,10 +58,44 @@ source ~/.bashrc
 
 ### 使い方
 
++ clone
+
 ```
-cd virtualbox-operation
+git clone https://github.com/iganari/vagrant-operation.git
+cd vagrant-operation
+```
+
++ 実行テスト
+
+```
+python3 python-operation.sh
+```
+
++ 端末の `~/.bashrc` に記載する
+
+```diff
++ alias vb='python3 ${vagrant-operaionのPATH}/python-operaion.sh'
+```
+
++ `~/.bashec` の再読み込み
+
+```
+source ~/.bashrc
+```
+
+### Python版の開発方法
+
++ 仮想環境の有効化
+
+```
 python3 -m venv .vb
 source .vb/bin/activate
+```
+
++ 仮想環境の無効化
+
+```
+deactivate
 ```
 
 # 現状のイケてないとこ :no_good:
