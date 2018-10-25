@@ -5,7 +5,7 @@ print('Plz tell me Number that You Want to Check ')
 
 i = input('>> ')
 
-print('Your Number is ', i)
+print('Your Input is ', i)
 
 # print('isdeimal:', i.isdecimal()) 
 
