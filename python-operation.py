@@ -5,13 +5,13 @@
 
 import os
 import sys
-import pdb
+# import pdb
 
 def chk_tmp_permission():
     
     chk_write = os.access('/tmp', os.W_OK)
 
-    if chk_write == True:
+    if chk_write is True:
         print('OK. You have Write Permisson')
         # pass
     else:
@@ -25,7 +25,7 @@ def chk_vb_command():
 
     for path in paths: 
         vb_cmd = path + 'VBoxManage'
-        if os.path.isfile(vb_cmd) == True:
+        if os.path.isfile(vb_cmd) is True:
             # print('OK')
             # print(vb_cmd)
             break    # After this, vb_cmd exists in reality.
