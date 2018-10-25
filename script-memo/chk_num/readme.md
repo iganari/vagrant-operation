@@ -17,22 +17,22 @@
 
 ```
 $ python3 chk_num_input.py 
-Plz tell me You Want to Check Number
->> 3
-Your Number is  3
+Plz tell me Number that You Want to Check 
+>> 4
+Your Input is  4
 This is OK
 ```
 ```
 $ python3 chk_num_input.py 
-Plz tell me You Want to Check Number
+Plz tell me Number that You Want to Check 
 >> f
-Your Number is  f
+Your Input is  f
 This is NG
 ```
 ```
 $ python3 chk_num_input.py 
-Plz tell me You Want to Check Number
->> -7
-Your Number is  -7
+Plz tell me Number that You Want to Check 
+>> -9
+Your Input is  -9
 This is NG
 ```
