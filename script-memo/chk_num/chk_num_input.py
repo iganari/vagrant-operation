@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-print('Plz tell me You Want to Check Number')
+print('Plz tell me Number that You Want to Check ')
 
 i = input('>> ')
 
