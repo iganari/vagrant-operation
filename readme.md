@@ -1,7 +1,7 @@
 # Virtualbox Operation
 
 + [Bash版](https://github.com/iganari/virtualbox-operation/blob/master/readme.md#bash版について)
-+ [Python版]
++ [Python版](https://github.com/iganari/virtualbox-operation/blob/master/readme.md#python版について)
 
 ## 出来ること・出来ないこと
 
@@ -22,6 +22,8 @@
 
 ## Bash版について
 
+### 使い方
+
 + clone
 
 ```
@@ -41,7 +43,7 @@ bash bash-operation.sh
 + alias vb='bash ${vagrant-operaionのPATH}/bash-operaion.sh'
 ```
 
-+ `.bashec` の再読み込み
++ `~/.bashec` の再読み込み
 
 ```
 source ~/.bashrc
@@ -56,15 +58,53 @@ source ~/.bashrc
 
 ### 使い方
 
++ clone
+
 ```
-cd virtualbox-operation
+git clone https://github.com/iganari/vagrant-operation.git
+cd vagrant-operation
+```
+
++ 実行テスト
+
+```
+python3 python-operation.sh
+```
+
++ 端末の `~/.bashrc` に記載する
+
+```diff
++ alias vb='python3 ${vagrant-operaionのPATH}/python-operaion.sh'
+```
+
++ `~/.bashec` の再読み込み
+
+```
+source ~/.bashrc
+```
+
+### Python版の開発方法
+
++ 仮想環境の有効化
+
+```
 python3 -m venv .vb
 source .vb/bin/activate
 ```
 
++ 仮想環境の無効化
+
+```
+deactivate
+```
+
 # 現状のイケてないとこ :no_good:
 
-+ BASH版しか無い
-    + ---> Python3でも作成中 :snake:
++ Bash版しか無い
+    + Python3
+        + 作成中 [:snake:](https://github.com/iganari/virtualbox-operation/issues/2)
+    + Golang
+        + issue化 [:memo:](https://github.com/iganari/virtualbox-operation/issues/7)
 + Virtualbox/Vagrantがそもそもインストールしているかの判定が入っていない
-    + ゆくゆく実装予定 ---> issueにしておく
+    + ゆくゆく実装予定
+        + issue化 [:memo:](https://github.com/iganari/virtualbox-operation/issues/3)
