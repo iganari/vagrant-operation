@@ -90,6 +90,11 @@ source ~/.bashrc
 ```
 python3 -m venv .vb
 source .vb/bin/activate
+pip install -r package.txt
+```
+
+```
+flake8 python-operation.py --show-source
 ```
 
 + 仮想環境の無効化
