@@ -15,8 +15,8 @@ jobs:
           name: checkout branch to readme-only
           command: "git checkout modify-readme-only"
       - run:
-          name: pull master branch
-          command: "git pull origin master"
+          name: pull ${CIRCLE_BRANCH} branch
+          command: "git pull origin ${CIRCLE_BRANCH}"
       - run:
           name: push readme-only branch
           command: "git push origin modify-readme-only"
