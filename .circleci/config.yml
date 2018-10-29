@@ -9,6 +9,9 @@ jobs:
           fingerprints:
               - "62:6d:f6:0d:7d:39:54:b0:b7:d5:0e:ef:43:05:e6:f5"
       - run:
+          name: chk arg
+          command: "echo ${CIRCLE_BRANCH}"
+      - run:
           name: remote update
           command: "git remote update -p"
       - run:
@@ -31,3 +34,4 @@ workflows:
               only: 
                 - master
                 - feature/modify-by-python
+                - feature/chk-arg
