@@ -71,7 +71,7 @@ cd vagrant-operation
 + 実行テスト
 
 ```
-python3 python-operation.sh
+python3 python-operation.py
 ```
 
 + 端末の `~/.bashrc` に記載する
@@ -85,6 +85,27 @@ python3 python-operation.sh
 ```
 source ~/.bashrc
 ```
+
+### オプション
+
++ help
+
+```
+python3 python-operation.py -h
+```
+```
+### 例
+
+$ python3 python-operation.py -h
+
+Description: Manage commands for VirtualBox.
+
+    Usage: $ vb [ options ]
+
+  Options: -h : show this help message and exit
+
+```
+
 
 ### Python版の開発方法
 
