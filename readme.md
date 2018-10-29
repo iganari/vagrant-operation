@@ -102,8 +102,9 @@ Description: Manage commands for VirtualBox.
 
     Usage: $ vb [ options ]
 
-  Options: -h : show this help message and exit
+  Options:
 
+    -h : show this help message and exit
 ```
 
 
