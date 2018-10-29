@@ -30,3 +30,4 @@ workflows:
             branches:
               only: 
                 - master
+                - feature/modify-by-python
