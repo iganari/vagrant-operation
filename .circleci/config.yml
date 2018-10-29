@@ -31,4 +31,3 @@ workflows:
               only: 
                 - master
                 - feature/modify-by-python
-                - feature/chk-arg
