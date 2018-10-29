@@ -13,11 +13,33 @@ import sys
 usage = """
 Description: Manage commands for VirtualBox.
 
-    Usage: $ vb
+    Usage: $ vb [ options ]
 
   Options: -h : show this help message and exit
 
+
+
 """
+
+# 引数の取得
+def get_args():
+
+    # 返り値の定義
+    options = "" # 個々の引数
+    subject = ""
+
+
+    try:
+        for arg in sys.argv:
+          if arg.rstrip().startswith("-"):
+              options = options + arg.replace("-", "")
+        subject = " ".join(sys.argv).split("]")[1]
+
+    except IndexError:
+        pass
+
+    return options, subject
+
 
 def chk_tmp_permission():
     
@@ -73,6 +95,19 @@ def test_print():
 # main
 def main():
 
+    # 出力値
+    output = ""
+
+    # get_args関数の引出し
+    options, subject = get_args()
+
+    # 引数が `-h` だった場合
+    if "h" in options:
+        print(usage)
+        # print('OK')
+        sys.exit(0)
+
+
     # Confirm whether you have write permission for /tmp
     chk_tmp_permission()
 
@@ -87,6 +122,10 @@ def main():
     test_print()
     # test
     print('END')
+
+
+    print(output)
+
 
 if __name__ == '__main__':
     main()
