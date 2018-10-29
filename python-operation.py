@@ -69,7 +69,9 @@ def test_print():
     print(' <--- [   ALL VM   ]      |    [   Running VM   ] ---> ')     
     print('-------------------------------------------------------\n')
 
-if __name__ == '__main__':
+
+# main
+def main():
 
     # Confirm whether you have write permission for /tmp
     chk_tmp_permission()
@@ -86,3 +88,5 @@ if __name__ == '__main__':
     # test
     print('END')
 
+if __name__ == '__main__':
+    main()
