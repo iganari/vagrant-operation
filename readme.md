@@ -1,5 +1,8 @@
 # Virtualbox Operation
 
+[![CircleCI](https://circleci.com/gh/iganari/circleci-test.svg?style=svg)](https://circleci.com/gh/iganari/circleci-test)
+
+
 + [Bash版](https://github.com/iganari/virtualbox-operation/blob/master/readme.md#bash版について)
 + [Python版](https://github.com/iganari/virtualbox-operation/blob/master/readme.md#python版について)
 
