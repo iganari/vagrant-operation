@@ -17,7 +17,7 @@ Description: Manage commands for VirtualBox.
 
   Options:
 
-    -h : show this help message and exit
+      -h : show this help message and exit
 
 """
 
