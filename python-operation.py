@@ -9,6 +9,16 @@ import os
 import sys
 # import pdb
 
+# Usage
+usage = """
+Description: Manage commands for VirtualBox.
+
+    Usage: $ vb
+
+  Options: -h : show this help message and exit
+
+"""
+
 def chk_tmp_permission():
     
     chk_write = os.access('/tmp', os.W_OK)
