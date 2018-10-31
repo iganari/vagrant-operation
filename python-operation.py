@@ -194,16 +194,23 @@ def print_list():
     print('      [   ALL VM   ]      |')     
     print('---------------------------')
 
-    for index in range(len(vname_all)):
-        print('    ' + vname_all[index])
+
+    if vname_all == []:
+        print('*** ' + 'not Making VMs' + ' ***')
+    else:
+        for index in range(len(vname_all)):
+            print('    ' + vname_all[index])
 
     # print('\n\n## Virtual Box List ##\n')
     print('\n---------------------------')
     print('    [   Running VM   ]    |')     
     print('---------------------------')
 
-    for index in range(len(vname_rng)):
-        print('    ' + vname_rng[index])
+    if vname_rng == []:
+        print('*** ' + 'not Running VMs' + ' ***')
+    else:
+        for index in range(len(vname_rng)):
+            print('    ' + vname_rng[index])
 
     # print('\n\n## Virtual Box List ##\n')
     print('\n---------------------------')

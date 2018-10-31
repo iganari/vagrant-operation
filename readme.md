@@ -118,6 +118,8 @@ source .vb/bin/activate
 pip install -r package.txt
 ```
 
++ flake8によるコードレビュー
+
 ```
 flake8 python-operation.py --show-source
 ```
