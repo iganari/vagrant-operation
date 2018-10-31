@@ -77,7 +77,7 @@ def chk_vb_command():
 def exe_vm_all():
 
     cmd = chk_vb_command()
-    print('Check all VMs')
+    # print('Check all VMs')
 
     import subprocess
 
@@ -112,7 +112,7 @@ def exe_vm_all():
         print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
 
     # 配列の確認
-    print(vms_name_all_list)
+    # print(vms_name_all_list)
 
     return vms_name_all_list
 
@@ -121,7 +121,7 @@ def exe_vm_all():
 def exe_vm_running():
 
     cmd = chk_vb_command()
-    print('Check runnint VMs')
+    # print('Check runnint VMs')
 
     import subprocess
 
@@ -156,17 +156,62 @@ def exe_vm_running():
         print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
 
     # 配列の確認
-    print(vms_name_running_list)
+    # print(vms_name_running_list)
 
     return vms_name_running_list
 
+# 配列の比較
+def chk_list_diff():
 
-def test_print():
+    # 関数の呼び出し
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
 
-    print('\n\n## Virtual Box List ##\n')
-    print('-------------------------------------------------------')
-    print(' <--- [   ALL VM   ]      |    [   Running VM   ] ---> ')     
-    print('-------------------------------------------------------\n')
+    # 集合(set)にして差分を確認
+    vname_dif = set(vname_all) - set(vname_rng)
+
+    # print(vname_all)
+    # print(vname_rng)
+
+    # 差分のsetをsetのまま表示する
+    # print(vname_dif)
+
+    # setを配列(list)に直す
+    vname_dif = list(vname_dif)
+    # print(vname_dif)
+
+    return vname_dif
+
+
+def print_list():
+
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
+    vname_dif = chk_list_diff()
+
+    print('\n\n### Virtual Box List ###')
+    print('\n---------------------------')
+    print('      [   ALL VM   ]      |')     
+    print('---------------------------')
+
+    for index in range(len(vname_all)):
+        print('    ' + vname_all[index])
+
+    # print('\n\n## Virtual Box List ##\n')
+    print('\n---------------------------')
+    print('    [   Running VM   ]    |')     
+    print('---------------------------')
+
+    for index in range(len(vname_rng)):
+        print('    ' + vname_rng[index])
+
+    # print('\n\n## Virtual Box List ##\n')
+    print('\n---------------------------')
+    print('    [ DIFFERENCE  VM ]    |')     
+    print('---------------------------')
+
+    for index in range(len(vname_dif)):
+        print('  ' + str(index) + "    " + vname_dif[index])
 
 
 # main
@@ -191,18 +236,7 @@ def main():
     # Confirm whether you have write permission for /tmp
     chk_tmp_permission()
 
-    # Check if VBoxManage is installed
-    # chk_vb_command()
-
-    # 
-    # pdb.set_trace()
-    exe_vm_all()
-    exe_vm_running()
-
-    # test print
-    # test_print()
-    # test
-    # print('END')
+    print_list()
 
 
     print(output)
