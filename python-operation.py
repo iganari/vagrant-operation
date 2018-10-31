@@ -111,9 +111,10 @@ def exe_vm_all():
     except subprocess.CalledProcessError:
         print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
 
-
     # 配列の確認
     print(vms_name_all_list)
+
+    return vms_name_all_list
 
 
 # 現在起動しているVMの表示名を取得する(vms_name_running_list)
@@ -154,9 +155,10 @@ def exe_vm_running():
     except subprocess.CalledProcessError:
         print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
 
-
     # 配列の確認
     print(vms_name_running_list)
+
+    return vms_name_running_list
 
 
 def test_print():
