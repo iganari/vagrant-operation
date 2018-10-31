@@ -53,7 +53,7 @@ def chk_tmp_permission():
         sys.exit(0)
 
 
-# VBoxManage コマンドの有無を確認する
+# VBoxManage コマンドの有無を確認する関数
 def chk_vb_command():
     import subprocess
 
@@ -76,20 +76,23 @@ def chk_vb_command():
 def exe_vm_all():
 
     cmd = chk_vb_command()
-    print('Check all VMs') 
+    print('Check all VMs')
 
     import subprocess
 
+    vms_name_all_list = []
+
     try:
-        # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
-        # res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
-        res = subprocess.run([cmd, "list", "vms"], 
+        res = subprocess.run([cmd, "list", "vms"],
                              check=True,
                              stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
                              universal_newlines=True)
-        # sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
 
+        # 標準出力としてターミナルに出力する
+        # sys.stdout.buffer.write(res.stdout)
+
+        # 一行ずつ取り出して、処理したい
         for line in res.stdout.splitlines():
             # すべての表示
             # print(line)
@@ -98,11 +101,19 @@ def exe_vm_all():
             # print(line.split('"'))
 
             # " で区切って配列形式の2個目 = VM name
-            print(line.split('"')[1])
+            vms_name_all = line.split('"')[1]
+            # print(vms_name_all)
+
+            # 配列に追加する
+            vms_name_all_list.append(vms_name_all)
 
 
     except subprocess.CalledprocessError:
         print('Error', file=sys.stderr)
+
+    # 配列の確認
+    print(vms_name_all_list)
+
 
 def exe_vm_running():
 
