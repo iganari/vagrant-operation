@@ -28,11 +28,10 @@ def get_args():
     options = "" # 個々の引数
     subject = ""
 
-
     try:
         for arg in sys.argv:
-          if arg.rstrip().startswith("-"):
-              options = options + arg.replace("-", "")
+            if arg.rstrip().startswith("-"):
+                options = options + arg.replace("-", "")
         subject = " ".join(sys.argv).split("]")[1]
 
     except IndexError:
@@ -42,7 +41,7 @@ def get_args():
 
 
 def chk_tmp_permission():
-    
+
     chk_write = os.access('/tmp', os.W_OK)
 
     if chk_write is True:
@@ -54,8 +53,8 @@ def chk_tmp_permission():
 
 def chk_vb_command():
     import subprocess
-    
-    paths = [ "/usr/bin/", "/usr/local/bin/" ]
+
+    paths = ["/usr/bin/", "/usr/local/bin/"]
 
     for path in paths: 
         vb_cmd = path + 'VBoxManage'
@@ -72,20 +71,22 @@ def chk_vb_command():
     return vb_cmd
 
 def exe_vm():
+
     cmd = chk_vb_command()
     print(cmd)    
 
     import subprocess
-   
+
     try:
-      # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
-      # res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
-      res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
-      sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
+        # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
+        # res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
+        res = subprocess.run([cmd, "list", "vms"], stdout=subprocess.PIPE)
+        sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
     except:
-      print('Error')
+        print('Error')
 
 def test_print():
+
     print('\n\n## Virtual Box List ##\n')
     print('-------------------------------------------------------')
     print(' <--- [   ALL VM   ]      |    [   Running VM   ] ---> ')     
@@ -106,7 +107,6 @@ def main():
         print(usage)
         # print('OK')
         sys.exit(0)
-
 
     # Confirm whether you have write permission for /tmp
     chk_tmp_permission()
