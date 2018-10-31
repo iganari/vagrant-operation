@@ -13,7 +13,7 @@ jobs:
           command: "uname -a"
       - run:
           name: install curl
-          command: "apt-get install -y curl"
+          command: "apk add curl"
       - run:
           name: remote update
           command: "git remote update -p"
