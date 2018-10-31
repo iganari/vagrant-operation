@@ -73,6 +73,7 @@ def chk_vb_command():
     # print(vb_cmd)
     return vb_cmd
 
+# 実在するVMの表示名を取得する(vms_name_all_list)
 def exe_vm_all():
 
     cmd = chk_vb_command()
@@ -115,6 +116,7 @@ def exe_vm_all():
     print(vms_name_all_list)
 
 
+# 現在起動しているVMの表示名を取得する(vms_name_running_list)
 def exe_vm_running():
 
     cmd = chk_vb_command()
