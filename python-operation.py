@@ -83,10 +83,26 @@ def exe_vm_all():
     try:
         # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
         # res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
-        res = subprocess.run([cmd, "list", "vms"], stdout=subprocess.PIPE)
-        sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
-    except:
-        print('Error')
+        res = subprocess.run([cmd, "list", "vms"], 
+                             check=True,
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE,
+                             universal_newlines=True)
+        # sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
+
+        for line in res.stdout.splitlines():
+            # すべての表示
+            # print(line)
+
+            # " で区切って配列形式
+            # print(line.split('"'))
+
+            # " で区切って配列形式の2個目 = VM name
+            print(line.split('"')[1])
+
+
+    except subprocess.CalledprocessError:
+        print('Error', file=sys.stderr)
 
 def exe_vm_running():
 
@@ -137,12 +153,12 @@ def main():
     # 
     # pdb.set_trace()
     exe_vm_all()
-    exe_vm_running()
+    # exe_vm_running()
 
     # test print
-    test_print()
+    # test_print()
     # test
-    print('END')
+    # print('END')
 
 
     print(output)
