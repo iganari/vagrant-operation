@@ -107,9 +107,9 @@ def exe_vm_all():
             # 配列に追加する
             vms_name_all_list.append(vms_name_all)
 
+    except subprocess.CalledProcessError:
+        print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
 
-    except subprocess.CalledprocessError:
-        print('Error', file=sys.stderr)
 
     # 配列の確認
     print(vms_name_all_list)
@@ -122,11 +122,40 @@ def exe_vm_running():
 
     import subprocess
 
+    vms_name_running_list = []
+
     try:
-        res = subprocess.run([cmd, "list", "runningvms"], stdout=subprocess.PIPE)
-        sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
-    except:
-        print('Error')
+        res = subprocess.run([cmd, "list", "runningvms"],
+                             check=True,
+                             stdout=subprocess.PIPE,
+                             stderr=subprocess.PIPE,
+                             universal_newlines=True)
+
+        # 標準出力としてターミナルに出力する
+        # sys.stdout.buffer.write(res.stdout)
+
+        # 一行ずつ取り出して、処理したい
+        for line in res.stdout.splitlines():
+            # すべての表示
+            # print(line)
+
+            # " で区切って配列形式
+            # print(line.split('"'))
+
+            # " で区切って配列形式の2個目 = VM name
+            vms_name_running = line.split('"')[1]
+            # print(vms_name_all)
+
+            # 配列に追加する
+            vms_name_running_list.append(vms_name_running)
+
+    except subprocess.CalledProcessError:
+        print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+
+
+    # 配列の確認
+    print(vms_name_running_list)
+
 
 def test_print():
 
@@ -164,7 +193,7 @@ def main():
     # 
     # pdb.set_trace()
     exe_vm_all()
-    # exe_vm_running()
+    exe_vm_running()
 
     # test print
     # test_print()
