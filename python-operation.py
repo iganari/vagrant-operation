@@ -40,6 +40,7 @@ def get_args():
     return options, subject
 
 
+# /tmp の書き込み権限をチェックする
 def chk_tmp_permission():
 
     chk_write = os.access('/tmp', os.W_OK)
@@ -51,6 +52,8 @@ def chk_tmp_permission():
         print('NO, You do not have Write Permisson')
         sys.exit(0)
 
+
+# VBoxManage コマンドの有無を確認する
 def chk_vb_command():
     import subprocess
 
@@ -70,10 +73,10 @@ def chk_vb_command():
     # print(vb_cmd)
     return vb_cmd
 
-def exe_vm():
+def exe_vm_all():
 
     cmd = chk_vb_command()
-    print(cmd)    
+    print('Check all VMs') 
 
     import subprocess
 
@@ -81,6 +84,19 @@ def exe_vm():
         # res = subprocess.run(["ls", "-la"], stdout=subprocess.PIPE)
         # res = subprocess.run([ cmd, "list", "vms" ], stdout=subprocess.PIPE)
         res = subprocess.run([cmd, "list", "vms"], stdout=subprocess.PIPE)
+        sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
+    except:
+        print('Error')
+
+def exe_vm_running():
+
+    cmd = chk_vb_command()
+    print('Check runnint VMs')
+
+    import subprocess
+
+    try:
+        res = subprocess.run([cmd, "list", "runningvms"], stdout=subprocess.PIPE)
         sys.stdout.buffer.write(res.stdout) # 標準出力としてターミナルに出力する
     except:
         print('Error')
@@ -102,6 +118,10 @@ def main():
     # get_args関数の引出し
     options, subject = get_args()
 
+    print('options is ', options)
+    print('subject is ', subject)
+
+
     # 引数が `-h` だった場合
     if "h" in options:
         print(usage)
@@ -116,7 +136,8 @@ def main():
 
     # 
     # pdb.set_trace()
-    exe_vm()
+    exe_vm_all()
+    exe_vm_running()
 
     # test print
     test_print()
