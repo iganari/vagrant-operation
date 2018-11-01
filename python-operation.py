@@ -271,11 +271,8 @@ def fnc_start():
     import subprocess
 
 
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
     vname_dif = chk_list_diff()
 
-    # assignment
     print('\n---------------------------')
     print('    [ DIFFERENCE  VM ]    |')     
     print('---------------------------')
