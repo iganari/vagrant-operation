@@ -170,14 +170,15 @@ def chk_list_diff():
     # 集合(set)にして差分を確認
     vname_dif = set(vname_all) - set(vname_rng)
 
-    # print(vname_all)
-    # print(vname_rng)
-
     # 差分のsetをsetのまま表示する
     # print(vname_dif)
 
     # setを配列(list)に直す
     vname_dif = list(vname_dif)
+    # print(vname_dif)
+
+    # 出来た配列をソートする
+    vname_dif = sorted(vname_dif)
     # print(vname_dif)
 
     return vname_dif
@@ -389,8 +390,8 @@ def main():
     # Confirm whether you have write permission for /tmp
     chk_tmp_permission()
 
+    # メイン処理
     print_list()
-    # input_num()
 
     print(output)
 
