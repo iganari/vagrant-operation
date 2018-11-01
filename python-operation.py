@@ -224,11 +224,28 @@ def print_list():
             print('    ' + vname_dif[index])
 
 
-    print('\n\n### choose VM operation ###\n')
+    print('\n\n### choose NUMBER of operation VM behave ###\n')
     print(' 1 : start')
     print(' 2 : stop')
     print(' 3 : search')
     print(' 9 : exit')
+
+
+    # ユーザの入力
+    ans = input_num()
+    # print(ans)
+
+    if ans == 1:
+        fnc_start()    
+    elif ans ==2: 
+        print('your input 2')
+    elif ans ==3: 
+        print('your input 3')
+    elif ans ==9: 
+        print('your input 9')
+    else:
+        print('Error')
+        sys.exit(1)
 
 
 # inputによる入力と数値チェック
@@ -240,12 +257,70 @@ def input_num():
 
     if chk_num == True:
         # print('OK')
+        input_number = int(i)
         pass
     else:
         print('入力された値が数値でありません')
         sys.exit(1)
 
-    return chk_num
+    return input_number
+
+# startの関数
+def fnc_start():
+
+    import subprocess
+
+
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
+    vname_dif = chk_list_diff()
+
+    # assignment
+    print('\n---------------------------')
+    print('    [ DIFFERENCE  VM ]    |')     
+    print('---------------------------')
+
+    if vname_dif == []:
+        print('*** ' + 'not Diff VMs' + ' ***')
+    else:
+        for index in range(len(vname_dif)):
+            print('    ' + str(index) + '    ' + vname_dif[index])
+
+
+    # ユーザの入力
+    start_ans = input_num()
+    print('input: ', start_ans)
+
+    if start_ans > len(vname_dif) - 1:
+        print('入力した数値が大きすぎます')
+    else:
+        # print('input: ', start_ans)
+        cmd = chk_vb_command()
+
+        # print(vname_dif)
+
+        # 入力された数値に対応するvnameを代入
+        start_vname = vname_dif[start_ans]
+
+        # print('len(hairetu): ', len(vame_dif))
+        # print('start_vname', start_vname)
+
+        # vnameを元にVirtualBoxをヘッドレスモードで起動する
+
+        print('Start Virtualbox is ' + str(start_vname))
+        try:
+            res = subprocess.run([cmd, "startvm", start_vname, "-type", "vrdp"],
+                                 check=True,
+                                 stdout=subprocess.PIPE,
+                                 stderr=subprocess.PIPE,
+                                 universal_newlines=True)
+
+            # 標準出力としてターミナルに出力する
+            # sys.stdout.buffer.write(res.stdout)
+
+        except subprocess.CalledProcessError:
+            print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+
 
 # main
 def main():
