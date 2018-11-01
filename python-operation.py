@@ -250,7 +250,8 @@ def print_list():
     elif ans ==3: 
         print('your input 3')
     elif ans ==9: 
-        print('your input 9')
+        print('OK! See You!!')
+        sys.exit(0)
     else:
         print('Error')
         sys.exit(1)
