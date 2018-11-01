@@ -182,7 +182,7 @@ def chk_list_diff():
 
     return vname_dif
 
-
+# VirtualBoxのリスト表示
 def print_list():
 
     vname_all = exe_vm_all()
@@ -217,9 +217,35 @@ def print_list():
     print('    [ DIFFERENCE  VM ]    |')     
     print('---------------------------')
 
-    for index in range(len(vname_dif)):
-        print('  ' + str(index) + "    " + vname_dif[index])
+    if vname_dif == []:
+        print('*** ' + 'not Diff VMs' + ' ***')
+    else:
+        for index in range(len(vname_dif)):
+            print('    ' + vname_dif[index])
 
+
+    print('\n\n### choose VM operation ###\n')
+    print(' 1 : start')
+    print(' 2 : stop')
+    print(' 3 : search')
+    print(' 9 : exit')
+
+
+# inputによる入力と数値チェック
+def input_num():
+
+    i = input('>> ')
+
+    chk_num = i.isdecimal()
+
+    if chk_num == True:
+        # print('OK')
+        pass
+    else:
+        print('入力された値が数値でありません')
+        sys.exit(1)
+
+    return chk_num
 
 # main
 def main():
@@ -244,7 +270,7 @@ def main():
     chk_tmp_permission()
 
     print_list()
-
+    # input_num()
 
     print(output)
 
