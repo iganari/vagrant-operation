@@ -234,11 +234,12 @@ def print_list():
     # ユーザの入力
     ans = input_num()
     # print(ans)
+    print('input: ', ans)
 
     if ans == 1:
         fnc_start()    
     elif ans ==2: 
-        print('your input 2')
+        fnc_stop()    
     elif ans ==3: 
         print('your input 3')
     elif ans ==9: 
@@ -265,12 +266,14 @@ def input_num():
 
     return input_number
 
+
 # startの関数
 def fnc_start():
 
     import subprocess
 
-
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
     vname_dif = chk_list_diff()
 
     print('\n---------------------------')
@@ -314,6 +317,51 @@ def fnc_start():
 
             # 標準出力としてターミナルに出力する
             # sys.stdout.buffer.write(res.stdout)
+
+        except subprocess.CalledProcessError:
+            print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+
+
+# stopの関数
+def fnc_stop():
+
+    import subprocess
+
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
+    vname_dif = chk_list_diff()
+
+    print('\n---------------------------')
+    print('    [   Running VM   ]    |')     
+    print('---------------------------')
+
+    if vname_rng == []:
+        print('*** ' + 'not Running VMs' + ' ***')
+    else:
+        for index in range(len(vname_rng)):
+            print('    ' + str(index) + '    ' + vname_rng[index])
+
+
+    # ユーザの入力
+    stop_ans = input_num()
+    print('input: ', stop_ans)
+
+    if stop_ans > len(vname_rng) - 1:
+        print('入力した数値が大きすぎます')
+    else:
+        cmd = chk_vb_command()
+
+        # 入力された数値に対応するvnameを代入
+        stop_vname = vname_rng[stop_ans]
+
+        # vnameを元にVirtualBoxを停止させる
+        print('Stop Virtualbox is ' + str(stop_vname))
+        try:
+            res = subprocess.run([cmd, "controlvm", stop_vname, "poweroff"],
+                                 check=True,
+                                 stdout=subprocess.PIPE,
+                                 stderr=subprocess.PIPE,
+                                 universal_newlines=True)
 
         except subprocess.CalledProcessError:
             print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
