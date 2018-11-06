@@ -54,8 +54,6 @@ source ~/.bashrc
 
 ## Python版について
 
-### :warning: 注意
-
 + 使用出来ますがリファクタリング中です :building_construction:
 + Python 3.x でのみ想定しています
 
@@ -77,7 +75,7 @@ python3 python-operation.py
 + 端末の `~/.bashrc` に記載する
 
 ```diff
-+ alias vb='python3 ${vagrant-operaionのPATH}/python-operaion.sh'
++ alias vb='python3 ${vagrant-operaionのPATH}/python-operaion.py'
 ```
 
 + `~/.bashec` の再読み込み
