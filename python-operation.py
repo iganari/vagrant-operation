@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/bin/env python
 # conding: utf-8
 
 # 
@@ -248,7 +248,7 @@ def print_list():
     elif ans ==2: 
         fnc_stop()    
     elif ans ==3: 
-        print('your input 3')
+        fnc_search()
     elif ans ==9: 
         print('OK! See You!!')
         sys.exit(0)
@@ -373,6 +373,70 @@ def fnc_stop():
 
         except subprocess.CalledProcessError:
             print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+
+
+
+# searchの関数
+def fnc_search():
+
+    import subprocess
+
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
+    vname_dif = chk_list_diff()
+
+    print('\n---------------------------')
+    print('      [   ALL VM   ]      |')     
+    print('---------------------------')
+
+    if vname_rng == []:
+        print('*** ' + 'not VMs' + ' ***')
+    else:
+        for index in range(len(vname_all)):
+            print('    ' + str(index) + '    ' + vname_all[index])
+
+
+    # ユーザの入力G
+    search_ans = input_num()
+    print('input: ', search_ans)
+
+    if search_ans > len(vname_all) - 1:
+        print('入力した数値が大きすぎます')
+    else:
+        cmd = chk_vb_command()
+
+        # 入力された数値に対応するvnameを代入
+        search_vname = vname_all[search_ans]
+
+
+        print(search_vname)
+
+
+        vag_files = []
+        # 環境変数から$HOMEを入れる
+        HOME_PATH = os.environ["HOME"]
+
+        # os.walkによる 'Vagrantfile' の検索
+        for root, dirs, files in os.walk(HOME_PATH):
+            for filename in files:
+                if filename == 'Vagrantfile' and root.find('.vagrant.d') is -1:
+                    vag_files.append(os.path.join(root, filename))
+                else:
+                    print('Vagrantfileが存在しません.')
+
+
+        # print(vag_files)
+                
+        srh_word = search_vname
+
+        for files in vag_files:
+            with open(files, encoding='utf-8') as f:
+                # print(files)
+                for row in f:
+                    # print(row)
+                    if not row.find(srh_word) is -1:
+                        print('This file name is ', files)
+                        
 
 
 # main
