@@ -1,7 +1,7 @@
 #!/bin/env python
 # conding: utf-8
 
-# 
+#
 # vb command
 #
 
@@ -198,7 +198,7 @@ def print_list():
 
     print('\n\n### Virtual Box List ###')
     print('\n---------------------------')
-    print('      [   ALL VM   ]      |')     
+    print('      [   ALL VM   ]      |')
     print('---------------------------')
 
 
@@ -210,7 +210,7 @@ def print_list():
 
     # print('\n\n## Virtual Box List ##\n')
     print('\n---------------------------')
-    print('    [   Running VM   ]    |')     
+    print('    [   Running VM   ]    |')
     print('---------------------------')
 
     if vname_rng == []:
@@ -221,7 +221,7 @@ def print_list():
 
     # print('\n\n## Virtual Box List ##\n')
     print('\n---------------------------')
-    print('    [ DIFFERENCE  VM ]    |')     
+    print('    [ DIFFERENCE  VM ]    |')
     print('---------------------------')
 
     if vname_dif == []:
@@ -244,12 +244,12 @@ def print_list():
     print('input: ', ans)
 
     if ans == 1:
-        fnc_start()    
-    elif ans ==2: 
-        fnc_stop()    
-    elif ans ==3: 
+        fnc_start()
+    elif ans ==2:
+        fnc_stop()
+    elif ans ==3:
         fnc_search()
-    elif ans ==9: 
+    elif ans ==9:
         print('OK! See You!!')
         sys.exit(0)
     else:
@@ -285,7 +285,7 @@ def fnc_start():
     vname_dif = chk_list_diff()
 
     print('\n---------------------------')
-    print('    [ DIFFERENCE  VM ]    |')     
+    print('    [ DIFFERENCE  VM ]    |')
     print('---------------------------')
 
     if vname_dif == []:
@@ -340,7 +340,7 @@ def fnc_stop():
     vname_dif = chk_list_diff()
 
     print('\n---------------------------')
-    print('    [   Running VM   ]    |')     
+    print('    [   Running VM   ]    |')
     print('---------------------------')
 
     if vname_rng == []:
@@ -386,7 +386,7 @@ def fnc_search():
     vname_dif = chk_list_diff()
 
     print('\n---------------------------')
-    print('      [   ALL VM   ]      |')     
+    print('      [   ALL VM   ]      |')
     print('---------------------------')
 
     if vname_rng == []:
@@ -440,7 +440,6 @@ def fnc_search():
                     # print(row)
                     if not row.find(srh_word) is -1:
                         print('This file name is ', files)
-                        
 
 
 # main
