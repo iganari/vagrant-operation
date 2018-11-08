@@ -396,7 +396,7 @@ def fnc_search():
             print('    ' + str(index) + '    ' + vname_all[index])
 
 
-    # ユーザの入力G
+    # ユーザの入力
     search_ans = input_num()
     print('input: ', search_ans)
 
@@ -416,17 +416,21 @@ def fnc_search():
         # 環境変数から$HOMEを入れる
         HOME_PATH = os.environ["HOME"]
 
+        print(HOME_PATH)
+
         # os.walkによる 'Vagrantfile' の検索
         for root, dirs, files in os.walk(HOME_PATH):
             for filename in files:
                 if filename == 'Vagrantfile' and root.find('.vagrant.d') is -1:
                     vag_files.append(os.path.join(root, filename))
                 else:
-                    print('Vagrantfileが存在しません.')
+                    pass
+
+        if vag_files == []:
+            print('あなたが探しているVagrantfileは存在しません.')
+            sys.exit(0)
 
 
-        # print(vag_files)
-                
         srh_word = search_vname
 
         for files in vag_files:
