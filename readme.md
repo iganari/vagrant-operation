@@ -54,9 +54,7 @@ source ~/.bashrc
 
 ## Python版について
 
-### :warning: 注意
-
-+ 作成中です :bow:
++ 使用出来ますがリファクタリング中です :building_construction:
 + Python 3.x でのみ想定しています
 
 ### 使い方
@@ -77,7 +75,7 @@ python3 python-operation.py
 + 端末の `~/.bashrc` に記載する
 
 ```diff
-+ alias vb='python3 ${vagrant-operaionのPATH}/python-operaion.sh'
++ alias vb='python3 ${vagrant-operaionのPATH}/python-operaion.py'
 ```
 
 + `~/.bashec` の再読み込み
@@ -132,11 +130,8 @@ deactivate
 
 # 現状のイケてないとこ :no_good:
 
-+ Bash版しか無い
-    + Python3
-        + 作成中 [:snake:](https://github.com/iganari/virtualbox-operation/issues/2)
-    + Golang
-        + issue化 [:memo:](https://github.com/iganari/virtualbox-operation/issues/7)
++ Golang版が無い
+    + issue化 [:memo:](https://github.com/iganari/virtualbox-operation/issues/7)
 + Virtualbox/Vagrantがそもそもインストールしているかの判定が入っていない
     + ゆくゆく実装予定
         + issue化 [:memo:](https://github.com/iganari/virtualbox-operation/issues/3)
