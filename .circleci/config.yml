@@ -22,7 +22,7 @@ jobs:
           command: "git checkout modify-readme-only"
       - run:
           name: pull branch to readme-only
-          command: "git pull modify-readme-only"
+          command: "git pull origin modify-readme-only"
       - run:
           name: DEBUG 1
           command: "which git"
