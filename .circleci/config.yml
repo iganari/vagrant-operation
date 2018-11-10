@@ -34,7 +34,7 @@ jobs:
           command: "git merge --force origin/${CIRCLE_BRANCH}"
       - run:
           name: pull ${CIRCLE_BRANCH} branch
-          command: "git pull --no-ff --force origin ${CIRCLE_BRANCH}"
+          command: "git pull --no-ff origin ${CIRCLE_BRANCH}"
       - run:
           name: push readme-only branch
           command: "git push origin modify-readme-only"
