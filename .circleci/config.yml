@@ -36,3 +36,4 @@ workflows:
             branches:
               only: 
                 - master
+                - feature/modify-circleci
