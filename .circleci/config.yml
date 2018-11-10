@@ -30,11 +30,8 @@ jobs:
           name: fetch
           command: "git fetch"
       - run:
-          name: merge
-          command: "git merge --no-ff origin/${CIRCLE_BRANCH}"
-      - run:
           name: pull ${CIRCLE_BRANCH} branch
-          command: "git pull --no-ff origin ${CIRCLE_BRANCH}"
+          command: "git pull --rebase origin ${CIRCLE_BRANCH}"
       - run:
           name: push readme-only branch
           command: "git push origin modify-readme-only"
