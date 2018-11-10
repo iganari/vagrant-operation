@@ -21,8 +21,11 @@ jobs:
           name: checkout branch to readme-only
           command: "git checkout modify-readme-only"
       - run:
-          name: pull ${CIRCLE_BRANCH} branch
-          command: "git pull origin ${CIRCLE_BRANCH}"
+          name: fetch
+          command: "git fetch"
+      - run:
+          name: merge ${CIRCLE_BRANCH}
+          command: "git merge -m \"merge branch ${CIRCLE_BRANCH} in CircleCI\" origin ${CIRCLE_BRANCH}"
       - run:
           name: push readme-only branch
           command: "git push origin modify-readme-only"
