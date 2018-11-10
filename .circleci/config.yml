@@ -31,7 +31,7 @@ jobs:
           command: "git fetch"
       - run:
           name: merge
-          command: "git merge --force origin/${CIRCLE_BRANCH}"
+          command: "git merge --no-ff origin/${CIRCLE_BRANCH}"
       - run:
           name: pull ${CIRCLE_BRANCH} branch
           command: "git pull --no-ff origin ${CIRCLE_BRANCH}"
