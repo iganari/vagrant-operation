@@ -292,12 +292,14 @@ def fnc_start():
         print('*** ' + 'not Diff VMs' + ' ***')
     else:
         for index in range(len(vname_dif)):
-            print('    ' + str(index) + '    ' + vname_dif[index])
+            print('    ' + str(index + 1) + '    ' + vname_dif[index])
 
 
     # ユーザの入力
     start_ans = input_num()
-    print('input: ', start_ans)
+    print('your input : ', start_ans)
+    # 修正
+    start_ans = start_ans - 1
 
     if start_ans > len(vname_dif) - 1:
         print('入力した数値が大きすぎます')
@@ -347,12 +349,15 @@ def fnc_stop():
         print('*** ' + 'not Running VMs' + ' ***')
     else:
         for index in range(len(vname_rng)):
-            print('    ' + str(index) + '    ' + vname_rng[index])
+            print('    ' + str(index + 1) + '    ' + vname_rng[index])
 
 
     # ユーザの入力
     stop_ans = input_num()
-    print('input: ', stop_ans)
+    print('your input : ', stop_ans)
+    # 修正
+    stop_ans = stop_ans - 1
+
 
     if stop_ans > len(vname_rng) - 1:
         print('入力した数値が大きすぎます')
@@ -393,12 +398,15 @@ def fnc_search():
         print('*** ' + 'not VMs' + ' ***')
     else:
         for index in range(len(vname_all)):
-            print('    ' + str(index) + '    ' + vname_all[index])
+            print('    ' + str(index + 1) + '    ' + vname_all[index])
 
 
     # ユーザの入力
     search_ans = input_num()
-    print('input: ', search_ans)
+    print('your input : ', search_ans)
+    # 修正
+    search_ans = search_ans - 1
+
 
     if search_ans > len(vname_all) - 1:
         print('入力した数値が大きすぎます')
