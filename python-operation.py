@@ -8,18 +8,7 @@
 import os
 import sys
 # import pdb
-
-# Usage
-usage = """
-Description: Manage commands for VirtualBox.
-
-    Usage: $ vb [ options ]
-
-  Options:
-
-      -h : show this help message and exit
-
-"""
+import argparse
 
 # 引数の取得
 def get_args():
@@ -456,18 +445,20 @@ def main():
     # 出力値
     output = ""
 
-    # get_args関数の引出し
-    options, subject = get_args()
+    # # get_args関数の引出し
+    # options, subject = get_args()
+    # 
+    # print('options is ', options)
+    # print('subject is ', subject)
 
-    print('options is ', options)
-    print('subject is ', subject)
 
-
-    # 引数が `-h` だった場合
-    if "h" in options:
-        print(usage)
-        # print('OK')
-        sys.exit(0)
+    # 引数制御をする
+    parser = argparse.ArgumentParser()
+    # parser.add_argument("--test")
+    # args = parser.parse_args()
+    # if args.test:
+    #     print("this is test")
+    parser.parse_args()
 
     # Confirm whether you have write permission for /tmp
     chk_tmp_permission()
