@@ -29,6 +29,20 @@ def get_args():
     return options, subject
 
 
+def parse_opts():
+    from argparse import ArgumentParser
+    parser = ArgumentParser()
+
+    parser.add_argument(
+        '-c',
+        '--check',
+        type = str,
+        help='WIP',
+    )
+
+    return parser.parse_args()
+
+
 # /tmp の書き込み権限をチェックする
 def chk_tmp_permission():
 
@@ -453,12 +467,7 @@ def main():
 
 
     # 引数制御をする
-    parser = argparse.ArgumentParser()
-    # parser.add_argument("--test")
-    # args = parser.parse_args()
-    # if args.test:
-    #     print("this is test")
-    parser.parse_args()
+    args = parse_opts()
 
     # Confirm whether you have write permission for /tmp
     chk_tmp_permission()
