@@ -25,17 +25,17 @@ def parse_opts():
     return parser.parse_args()
 
 
-# /tmp の書き込み権限をチェックする
-def chk_tmp_permission():
-
-    chk_write = os.access('/tmp', os.W_OK)
-
-    if chk_write is True:
-        print('OK. You have Write Permisson')
-        # pass
-    else:
-        print('NO, You do not have Write Permisson')
-        sys.exit(0)
+# # /tmp の書き込み権限をチェックする
+# def chk_tmp_permission():
+# 
+#     chk_write = os.access('/tmp', os.W_OK)
+# 
+#     if chk_write is True:
+#         print('OK. You have Write Permisson')
+#         # pass
+#     else:
+#         print('NO, You do not have Write Permisson')
+#         sys.exit(0)
 
 
 # VBoxManage コマンドの有無を確認する関数
@@ -438,8 +438,8 @@ def main():
     # 引数制御をする
     args = parse_opts()
 
-    # Confirm whether you have write permission for /tmp
-    chk_tmp_permission()
+    # # Confirm whether you have write permission for /tmp
+    # chk_tmp_permission()
 
     # メイン処理
     print_list()
@@ -449,3 +449,12 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+
+
+
+
+
+
+
