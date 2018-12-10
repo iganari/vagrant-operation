@@ -9,7 +9,7 @@ import os
 import sys
 # import pdb
 import argparse
-
+import subprocess
 
 def parse_opts():
     from argparse import ArgumentParser
@@ -40,7 +40,6 @@ def chk_tmp_permission():
 
 # VBoxManage コマンドの有無を確認する関数
 def chk_vb_command():
-    import subprocess
 
     paths = ["/usr/bin/", "/usr/local/bin/"]
 
@@ -64,7 +63,6 @@ def exe_vm_all():
     cmd = chk_vb_command()
     # print('Check all VMs')
 
-    import subprocess
 
     vms_name_all_list = []
 
@@ -111,7 +109,6 @@ def exe_vm_running():
     cmd = chk_vb_command()
     # print('Check runnint VMs')
 
-    import subprocess
 
     vms_name_running_list = []
 
@@ -263,7 +260,6 @@ def input_num():
 # startの関数
 def fnc_start():
 
-    import subprocess
 
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
@@ -320,7 +316,6 @@ def fnc_start():
 # stopの関数
 def fnc_stop():
 
-    import subprocess
 
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
@@ -369,7 +364,6 @@ def fnc_stop():
 # searchの関数
 def fnc_search():
 
-    import subprocess
 
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
