@@ -10,24 +10,6 @@ import sys
 # import pdb
 import argparse
 
-# 引数の取得
-def get_args():
-
-    # 返り値の定義
-    options = "" # 個々の引数
-    subject = ""
-
-    try:
-        for arg in sys.argv:
-            if arg.rstrip().startswith("-"):
-                options = options + arg.replace("-", "")
-        subject = " ".join(sys.argv).split("]")[1]
-
-    except IndexError:
-        pass
-
-    return options, subject
-
 
 def parse_opts():
     from argparse import ArgumentParser
@@ -37,7 +19,7 @@ def parse_opts():
         '-c',
         '--check',
         type = str,
-        help='WIP',
+        help='WIP: check VM List.',
     )
 
     return parser.parse_args()
@@ -458,13 +440,6 @@ def main():
 
     # 出力値
     output = ""
-
-    # # get_args関数の引出し
-    # options, subject = get_args()
-    # 
-    # print('options is ', options)
-    # print('subject is ', subject)
-
 
     # 引数制御をする
     args = parse_opts()
