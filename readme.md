@@ -1,4 +1,4 @@
-# Virtualbox Operation
+# VirtualBox Operation
 
 [![CircleCI](https://circleci.com/gh/iganari/circleci-test.svg?style=svg)](https://circleci.com/gh/iganari/circleci-test)
 
@@ -20,7 +20,7 @@
 ### 出来ないこと :cry:
 
 + 上記以外
-    + :warning: VirtualBoxやVagrantとうまくやって行きたいので、敢えて出来ることを絞っています
+    + VirtualBoxやVagrantとうまくやって行きたいので、敢えて出来ることを絞っています
 
 
 ## Bash版について

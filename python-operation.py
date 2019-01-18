@@ -8,54 +8,38 @@
 import os
 import sys
 # import pdb
+import argparse
+import subprocess
 
-# Usage
-usage = """
-Description: Manage commands for VirtualBox.
+def parse_opts():
+    from argparse import ArgumentParser
+    parser = ArgumentParser()
 
-    Usage: $ vb [ options ]
+    parser.add_argument(
+        '-c',
+        '--check',
+        type = str,
+        help='WIP: check VM List.',
+    )
 
-  Options:
-
-      -h : show this help message and exit
-
-"""
-
-# 引数の取得
-def get_args():
-
-    # 返り値の定義
-    options = "" # 個々の引数
-    subject = ""
-
-    try:
-        for arg in sys.argv:
-            if arg.rstrip().startswith("-"):
-                options = options + arg.replace("-", "")
-        subject = " ".join(sys.argv).split("]")[1]
-
-    except IndexError:
-        pass
-
-    return options, subject
+    return parser.parse_args()
 
 
-# /tmp の書き込み権限をチェックする
-def chk_tmp_permission():
-
-    chk_write = os.access('/tmp', os.W_OK)
-
-    if chk_write is True:
-        print('OK. You have Write Permisson')
-        # pass
-    else:
-        print('NO, You do not have Write Permisson')
-        sys.exit(0)
+# # /tmp の書き込み権限をチェックする
+# def chk_tmp_permission():
+# 
+#     chk_write = os.access('/tmp', os.W_OK)
+# 
+#     if chk_write is True:
+#         print('OK. You have Write Permisson')
+#         # pass
+#     else:
+#         print('NO, You do not have Write Permisson')
+#         sys.exit(0)
 
 
 # VBoxManage コマンドの有無を確認する関数
 def chk_vb_command():
-    import subprocess
 
     paths = ["/usr/bin/", "/usr/local/bin/"]
 
@@ -79,7 +63,6 @@ def exe_vm_all():
     cmd = chk_vb_command()
     # print('Check all VMs')
 
-    import subprocess
 
     vms_name_all_list = []
 
@@ -126,7 +109,6 @@ def exe_vm_running():
     cmd = chk_vb_command()
     # print('Check runnint VMs')
 
-    import subprocess
 
     vms_name_running_list = []
 
@@ -278,7 +260,6 @@ def input_num():
 # startの関数
 def fnc_start():
 
-    import subprocess
 
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
@@ -292,12 +273,14 @@ def fnc_start():
         print('*** ' + 'not Diff VMs' + ' ***')
     else:
         for index in range(len(vname_dif)):
-            print('    ' + str(index) + '    ' + vname_dif[index])
+            print('    ' + str(index + 1) + '    ' + vname_dif[index])
 
 
     # ユーザの入力
     start_ans = input_num()
-    print('input: ', start_ans)
+    print('your input : ', start_ans)
+    # 修正
+    start_ans = start_ans - 1
 
     if start_ans > len(vname_dif) - 1:
         print('入力した数値が大きすぎます')
@@ -333,7 +316,6 @@ def fnc_start():
 # stopの関数
 def fnc_stop():
 
-    import subprocess
 
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
@@ -347,12 +329,15 @@ def fnc_stop():
         print('*** ' + 'not Running VMs' + ' ***')
     else:
         for index in range(len(vname_rng)):
-            print('    ' + str(index) + '    ' + vname_rng[index])
+            print('    ' + str(index + 1) + '    ' + vname_rng[index])
 
 
     # ユーザの入力
     stop_ans = input_num()
-    print('input: ', stop_ans)
+    print('your input : ', stop_ans)
+    # 修正
+    stop_ans = stop_ans - 1
+
 
     if stop_ans > len(vname_rng) - 1:
         print('入力した数値が大きすぎます')
@@ -379,7 +364,6 @@ def fnc_stop():
 # searchの関数
 def fnc_search():
 
-    import subprocess
 
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
@@ -393,12 +377,15 @@ def fnc_search():
         print('*** ' + 'not VMs' + ' ***')
     else:
         for index in range(len(vname_all)):
-            print('    ' + str(index) + '    ' + vname_all[index])
+            print('    ' + str(index + 1) + '    ' + vname_all[index])
 
 
     # ユーザの入力
     search_ans = input_num()
-    print('input: ', search_ans)
+    print('your input : ', search_ans)
+    # 修正
+    search_ans = search_ans - 1
+
 
     if search_ans > len(vname_all) - 1:
         print('入力した数値が大きすぎます')
@@ -448,21 +435,11 @@ def main():
     # 出力値
     output = ""
 
-    # get_args関数の引出し
-    options, subject = get_args()
+    # 引数制御をする
+    args = parse_opts()
 
-    print('options is ', options)
-    print('subject is ', subject)
-
-
-    # 引数が `-h` だった場合
-    if "h" in options:
-        print(usage)
-        # print('OK')
-        sys.exit(0)
-
-    # Confirm whether you have write permission for /tmp
-    chk_tmp_permission()
+    # # Confirm whether you have write permission for /tmp
+    # chk_tmp_permission()
 
     # メイン処理
     print_list()
@@ -472,3 +449,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
