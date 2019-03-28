@@ -34,7 +34,7 @@ git clone https://github.com/iganari/vagrant-operation.git
 cd vagrant-operation
 ```
 
-+ 実行テスト
++ 実行
 
 ```
 bash bash-operation.sh
