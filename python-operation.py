@@ -273,7 +273,7 @@ def fnc_start():
         print('*** ' + 'not Diff VMs' + ' ***')
     else:
         for index in range(len(vname_dif)):
-            print('    ' + str(index + 1) + '    ' + vname_dif[index])
+            print(' ' + str(index + 1) + ' : ' + vname_dif[index])
 
 
     # ユーザの入力
@@ -329,7 +329,7 @@ def fnc_stop():
         print('*** ' + 'not Running VMs' + ' ***')
     else:
         for index in range(len(vname_rng)):
-            print('    ' + str(index + 1) + '    ' + vname_rng[index])
+            print(' ' + str(index + 1) + ' : ' + vname_rng[index])
 
 
     # ユーザの入力
@@ -377,7 +377,7 @@ def fnc_search():
         print('*** ' + 'not VMs' + ' ***')
     else:
         for index in range(len(vname_all)):
-            print('    ' + str(index + 1) + '    ' + vname_all[index])
+            print(' ' + str(index + 1) + ' : ' + vname_all[index])
 
 
     # ユーザの入力
