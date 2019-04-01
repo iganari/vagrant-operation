@@ -425,8 +425,6 @@ def main():
     # メイン処理
     print_list(vname_all, vname_rng, vname_dif)
 
-    # print(output)
-
 
 if __name__ == '__main__':
     main()
