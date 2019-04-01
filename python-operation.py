@@ -137,11 +137,7 @@ def exe_vm_running():
 
 
 # 配列の比較
-def chk_list_diff():
-
-    # 関数の呼び出し
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
+def chk_list_diff(vname_all, vname_rng):
 
     # 集合(set)にして差分を確認
     vname_dif = set(vname_all) - set(vname_rng)
@@ -208,11 +204,11 @@ def print_list(vname_all, vname_rng, vname_dif):
     print('input: ', ans)
 
     if ans == 1:
-        fnc_start()
+        fnc_start(vname_all, vname_rng, vname_dif)
     elif ans == 2:
-        fnc_stop()
+        fnc_stop(vname_all, vname_rng, vname_dif)
     elif ans == 3:
-        fnc_search()
+        fnc_search(vname_all, vname_rng, vname_dif)
     elif ans == 9:
         print('OK! See You!!')
         sys.exit(0)
@@ -240,11 +236,8 @@ def input_num():
 
 
 # startの関数
-def fnc_start():
+def fnc_start(vname_all, vname_rng, vname_dif):
 
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
 
     print('\n---------------------------')
     print('    [ DIFFERENCE  VM ]    |')
@@ -294,11 +287,7 @@ def fnc_start():
 
 
 # stopの関数
-def fnc_stop():
-
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+def fnc_stop(vname_all, vname_rng, vname_dif):
 
     print('\n---------------------------')
     print('    [   Running VM   ]    |')
@@ -338,11 +327,7 @@ def fnc_stop():
 
 
 # searchの関数
-def fnc_search():
-
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+def fnc_search(vname_all, vname_rng, vname_dif):
 
     print('\n---------------------------')
     print('      [   ALL VM   ]      |')
@@ -408,7 +393,7 @@ def main():
 
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+    vname_dif = chk_list_diff(vname_all, vname_rng)
 
 
     # sys.exit(0)
@@ -419,7 +404,7 @@ def main():
     # メイン処理
     print_list(vname_all, vname_rng, vname_dif)
 
-    print(output)
+    # print(output)
 
 
 if __name__ == '__main__':
