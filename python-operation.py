@@ -365,7 +365,7 @@ def fnc_search(vname_all, vname_rng, vname_dif):
     print('      [   ALL VM   ]      |')
     print('---------------------------')
 
-    if vname_rng == []:
+    if vname_all == []:
         print('*** ' + 'not VMs' + ' ***')
     else:
         for index in range(len(vname_all)):
