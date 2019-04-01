@@ -29,6 +29,10 @@ def parse_opts():
 # VBoxManage コマンドの有無を確認する関数
 def chk_vb_command():
 
+    """
+    ローカルにVirtualBoxのCLIがインストールしてあるか確認する
+    """
+
     paths = ["/usr/bin/", "/usr/local/bin/"]
 
     for path in paths:
@@ -48,6 +52,10 @@ def chk_vb_command():
 
 # 実在するVMの表示名を取得する(vms_name_all_list)
 def exe_vm_all():
+
+    """
+    ローカルマシンに存在するVMのリストを作成
+    """
 
     cmd = chk_vb_command()
     # print('Check all VMs')
@@ -94,6 +102,10 @@ def exe_vm_all():
 # 現在起動しているVMの表示名を取得する(vms_name_running_list)
 def exe_vm_running():
 
+    """
+    現在、ローカルマシン上で起動状態のVMのリストを作成
+    """
+
     cmd = chk_vb_command()
     # print('Check runnint VMs')
 
@@ -138,6 +150,10 @@ def exe_vm_running():
 
 # 配列の比較
 def chk_list_diff(vname_all, vname_rng):
+
+    """
+    (存在するVM) - (起動中VM) をすることで、これか起動出来るVMのリストを作成
+    """
 
     # 集合(set)にして差分を確認
     vname_dif = set(vname_all) - set(vname_rng)
@@ -220,6 +236,10 @@ def print_list(vname_all, vname_rng, vname_dif):
 # inputによる入力と数値チェック
 def input_num():
 
+    """
+    数字チェック
+    """
+
     i = input('>> ')
 
     chk_num = i.isdecimal()
@@ -237,6 +257,10 @@ def input_num():
 
 # startの関数
 def fnc_start(vname_all, vname_rng, vname_dif):
+
+    """
+    VMの起動関数
+    """
 
 
     print('\n---------------------------')
@@ -289,6 +313,10 @@ def fnc_start(vname_all, vname_rng, vname_dif):
 # stopの関数
 def fnc_stop(vname_all, vname_rng, vname_dif):
 
+    """
+    VMの停止関数
+    """
+
     print('\n---------------------------')
     print('    [   Running VM   ]    |')
     print('---------------------------')
@@ -328,6 +356,10 @@ def fnc_stop(vname_all, vname_rng, vname_dif):
 
 # searchの関数
 def fnc_search(vname_all, vname_rng, vname_dif):
+
+    """
+    VMの探索関数
+    """
 
     print('\n---------------------------')
     print('      [   ALL VM   ]      |')
