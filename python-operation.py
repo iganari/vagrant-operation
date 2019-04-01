@@ -217,7 +217,7 @@ def print_list(vname_all, vname_rng, vname_dif):
         print('OK! See You!!')
         sys.exit(0)
     else:
-        print('Error')
+        print('Error. Invalid input vale: {}'.format(ans))
         sys.exit(1)
 
 
