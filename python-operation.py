@@ -19,7 +19,7 @@ def parse_opts():
     parser.add_argument(
         '-c',
         '--check',
-        type = str,
+        type=str,
         help='WIP: check VM List.',
     )
 
@@ -262,7 +262,6 @@ def fnc_start(vname_all, vname_rng, vname_dif):
     VMの起動関数
     """
 
-
     print('\n---------------------------')
     print('    [ DIFFERENCE  VM ]    |')
     print('---------------------------')
@@ -419,19 +418,9 @@ def fnc_search(vname_all, vname_rng, vname_dif):
 # main
 def main():
 
-    # 出力値
-    output = ""
-
-
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
     vname_dif = chk_list_diff(vname_all, vname_rng)
-
-
-    # sys.exit(0)
-
-    # # Confirm whether you have write permission for /tmp
-    # chk_tmp_permission()
 
     # メイン処理
     print_list(vname_all, vname_rng, vname_dif)
