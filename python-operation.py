@@ -161,11 +161,7 @@ def chk_list_diff():
 
 
 # VirtualBoxのリスト表示
-def print_list():
-
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+def print_list(vname_all, vname_rng, vname_dif):
 
     print('\n\n### Virtual Box List ###')
     print('\n---------------------------')
@@ -409,11 +405,19 @@ def main():
     # 出力値
     output = ""
 
+
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
+    vname_dif = chk_list_diff()
+
+
+    # sys.exit(0)
+
     # # Confirm whether you have write permission for /tmp
     # chk_tmp_permission()
 
     # メイン処理
-    print_list()
+    print_list(vname_all, vname_rng, vname_dif)
 
     print(output)
 
