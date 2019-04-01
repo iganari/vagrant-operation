@@ -39,4 +39,4 @@ workflows:
             branches:
               only: 
                 - master
-                - feature/refactor-python
+                - refactor-python
