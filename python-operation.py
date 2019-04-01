@@ -8,8 +8,9 @@
 import os
 import sys
 # import pdb
-import argparse
+# import argparse
 import subprocess
+
 
 def parse_opts():
     from argparse import ArgumentParser
@@ -18,32 +19,23 @@ def parse_opts():
     parser.add_argument(
         '-c',
         '--check',
-        type = str,
+        type=str,
         help='WIP: check VM List.',
     )
 
     return parser.parse_args()
 
 
-# # /tmp の書き込み権限をチェックする
-# def chk_tmp_permission():
-# 
-#     chk_write = os.access('/tmp', os.W_OK)
-# 
-#     if chk_write is True:
-#         print('OK. You have Write Permisson')
-#         # pass
-#     else:
-#         print('NO, You do not have Write Permisson')
-#         sys.exit(0)
-
-
 # VBoxManage コマンドの有無を確認する関数
 def chk_vb_command():
 
+    """
+    ローカルにVirtualBoxのCLIがインストールしてあるか確認する
+    """
+
     paths = ["/usr/bin/", "/usr/local/bin/"]
 
-    for path in paths: 
+    for path in paths:
         vb_cmd = path + 'VBoxManage'
         if os.path.isfile(vb_cmd) is True:
             # print('OK')
@@ -57,12 +49,16 @@ def chk_vb_command():
     # print(vb_cmd)
     return vb_cmd
 
+
 # 実在するVMの表示名を取得する(vms_name_all_list)
 def exe_vm_all():
 
+    """
+    ローカルマシンに存在するVMのリストを作成
+    """
+
     cmd = chk_vb_command()
     # print('Check all VMs')
-
 
     vms_name_all_list = []
 
@@ -106,9 +102,12 @@ def exe_vm_all():
 # 現在起動しているVMの表示名を取得する(vms_name_running_list)
 def exe_vm_running():
 
+    """
+    現在、ローカルマシン上で起動状態のVMのリストを作成
+    """
+
     cmd = chk_vb_command()
     # print('Check runnint VMs')
-
 
     vms_name_running_list = []
 
@@ -148,12 +147,13 @@ def exe_vm_running():
 
     return vms_name_running_list
 
-# 配列の比較
-def chk_list_diff():
 
-    # 関数の呼び出し
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
+# 配列の比較
+def chk_list_diff(vname_all, vname_rng):
+
+    """
+    (存在するVM) - (起動中VM) をすることで、これか起動出来るVMのリストを作成
+    """
 
     # 集合(set)にして差分を確認
     vname_dif = set(vname_all) - set(vname_rng)
@@ -171,18 +171,14 @@ def chk_list_diff():
 
     return vname_dif
 
-# VirtualBoxのリスト表示
-def print_list():
 
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+# VirtualBoxのリスト表示
+def print_list(vname_all, vname_rng, vname_dif):
 
     print('\n\n### Virtual Box List ###')
     print('\n---------------------------')
     print('      [   ALL VM   ]      |')
     print('---------------------------')
-
 
     if vname_all == []:
         print('*** ' + 'not Making VMs' + ' ***')
@@ -212,13 +208,11 @@ def print_list():
         for index in range(len(vname_dif)):
             print('    ' + vname_dif[index])
 
-
     print('\n\n### choose NUMBER of operation VM behave ###\n')
     print(' 1 : start')
     print(' 2 : stop')
     print(' 3 : search')
     print(' 9 : exit')
-
 
     # ユーザの入力
     ans = input_num()
@@ -226,27 +220,31 @@ def print_list():
     print('input: ', ans)
 
     if ans == 1:
-        fnc_start()
-    elif ans ==2:
-        fnc_stop()
-    elif ans ==3:
-        fnc_search()
-    elif ans ==9:
+        fnc_start(vname_all, vname_rng, vname_dif)
+    elif ans == 2:
+        fnc_stop(vname_all, vname_rng, vname_dif)
+    elif ans == 3:
+        fnc_search(vname_all, vname_rng, vname_dif)
+    elif ans == 9:
         print('OK! See You!!')
         sys.exit(0)
     else:
-        print('Error')
+        print('Error. Invalid input vale: {}'.format(ans))
         sys.exit(1)
 
 
 # inputによる入力と数値チェック
 def input_num():
 
+    """
+    数字チェック
+    """
+
     i = input('>> ')
 
     chk_num = i.isdecimal()
 
-    if chk_num == True:
+    if chk_num is True:
         # print('OK')
         input_number = int(i)
         pass
@@ -258,12 +256,11 @@ def input_num():
 
 
 # startの関数
-def fnc_start():
+def fnc_start(vname_all, vname_rng, vname_dif):
 
-
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+    """
+    VMの起動関数
+    """
 
     print('\n---------------------------')
     print('    [ DIFFERENCE  VM ]    |')
@@ -273,8 +270,7 @@ def fnc_start():
         print('*** ' + 'not Diff VMs' + ' ***')
     else:
         for index in range(len(vname_dif)):
-            print('    ' + str(index + 1) + '    ' + vname_dif[index])
-
+            print(' ' + str(index + 1) + ' : ' + vname_dif[index])
 
     # ユーザの入力
     start_ans = input_num()
@@ -314,12 +310,11 @@ def fnc_start():
 
 
 # stopの関数
-def fnc_stop():
+def fnc_stop(vname_all, vname_rng, vname_dif):
 
-
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+    """
+    VMの停止関数
+    """
 
     print('\n---------------------------')
     print('    [   Running VM   ]    |')
@@ -329,15 +324,13 @@ def fnc_stop():
         print('*** ' + 'not Running VMs' + ' ***')
     else:
         for index in range(len(vname_rng)):
-            print('    ' + str(index + 1) + '    ' + vname_rng[index])
-
+            print(' ' + str(index + 1) + ' : ' + vname_rng[index])
 
     # ユーザの入力
     stop_ans = input_num()
     print('your input : ', stop_ans)
     # 修正
     stop_ans = stop_ans - 1
-
 
     if stop_ans > len(vname_rng) - 1:
         print('入力した数値が大きすぎます')
@@ -360,32 +353,28 @@ def fnc_stop():
             print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
 
 
-
 # searchの関数
-def fnc_search():
+def fnc_search(vname_all, vname_rng, vname_dif):
 
-
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
-    vname_dif = chk_list_diff()
+    """
+    VMの探索関数
+    """
 
     print('\n---------------------------')
     print('      [   ALL VM   ]      |')
     print('---------------------------')
 
-    if vname_rng == []:
+    if vname_all == []:
         print('*** ' + 'not VMs' + ' ***')
     else:
         for index in range(len(vname_all)):
-            print('    ' + str(index + 1) + '    ' + vname_all[index])
-
+            print(' ' + str(index + 1) + ' : ' + vname_all[index])
 
     # ユーザの入力
     search_ans = input_num()
     print('your input : ', search_ans)
     # 修正
     search_ans = search_ans - 1
-
 
     if search_ans > len(vname_all) - 1:
         print('入力した数値が大きすぎます')
@@ -395,9 +384,7 @@ def fnc_search():
         # 入力された数値に対応するvnameを代入
         search_vname = vname_all[search_ans]
 
-
         print(search_vname)
-
 
         vag_files = []
         # 環境変数から$HOMEを入れる
@@ -417,7 +404,6 @@ def fnc_search():
             print('あなたが探しているVagrantfileは存在しません.')
             sys.exit(0)
 
-
         srh_word = search_vname
 
         for files in vag_files:
@@ -432,21 +418,13 @@ def fnc_search():
 # main
 def main():
 
-    # 出力値
-    output = ""
-
-    # 引数制御をする
-    args = parse_opts()
-
-    # # Confirm whether you have write permission for /tmp
-    # chk_tmp_permission()
+    vname_all = exe_vm_all()
+    vname_rng = exe_vm_running()
+    vname_dif = chk_list_diff(vname_all, vname_rng)
 
     # メイン処理
-    print_list()
-
-    print(output)
+    print_list(vname_all, vname_rng, vname_dif)
 
 
 if __name__ == '__main__':
     main()
-

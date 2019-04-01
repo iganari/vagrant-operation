@@ -34,7 +34,7 @@ git clone https://github.com/iganari/vagrant-operation.git
 cd vagrant-operation
 ```
 
-+ 実行テスト
++ 実行
 
 ```
 bash bash-operation.sh
@@ -66,7 +66,7 @@ git clone https://github.com/iganari/vagrant-operation.git
 cd vagrant-operation
 ```
 
-+ 実行テスト
++ 実行
 
 ```
 python3 python-operation.py
@@ -104,6 +104,9 @@ Description: Manage commands for VirtualBox.
 
       -h : show this help message and exit
 ```
+
++ other
+    + 鋭意製作中 :muscle:
 
 
 ### Python版の開発方法
