@@ -418,6 +418,11 @@ def fnc_search(vname_all, vname_rng, vname_dif):
 # main
 def main():
 
+    vc_path = chk_vb_command()
+    print(vc_path)
+
+    sys.exit(0)
+
     vname_all = exe_vm_all()
     vname_rng = exe_vm_running()
     vname_dif = chk_list_diff(vname_all, vname_rng)
