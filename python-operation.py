@@ -223,7 +223,8 @@ def print_list(vc_path, vname_all, vname_rng, vname_dif):
         print('OK! See You!!')
         sys.exit(0)
     else:
-        print('Error. Invalid input vale: {}'.format(ans))
+        # print('Error. Invalid input vale: {}'.format(ans))
+        print('入力された値が選択出来る数値でありません: {}'.format(ans))
         sys.exit(1)
 
 
