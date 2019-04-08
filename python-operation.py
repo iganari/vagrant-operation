@@ -243,7 +243,7 @@ def input_num():
         input_number = int(i)
         pass
     else:
-        print('入力された値が自然数でありません')
+        print('入力された値が自然数でありません: {}'.format(i))
         sys.exit(1)
 
     return input_number
