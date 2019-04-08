@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 # conding: utf-8
 
 #
@@ -223,7 +223,8 @@ def print_list(vc_path, vname_all, vname_rng, vname_dif):
         print('OK! See You!!')
         sys.exit(0)
     else:
-        print('Error. Invalid input vale: {}'.format(ans))
+        # print('Error. Invalid input vale: {}'.format(ans))
+        print('入力された値が選択出来る数値でありません: {}'.format(ans))
         sys.exit(1)
 
 
@@ -238,12 +239,12 @@ def input_num():
 
     chk_num = i.isdecimal()
 
-    if chk_num is True:
+    if chk_num is True and not i == '0':
         # print('OK')
         input_number = int(i)
         pass
     else:
-        print('入力された値が数値でありません')
+        print('入力された値が自然数でありません: {}'.format(i))
         sys.exit(1)
 
     return input_number
