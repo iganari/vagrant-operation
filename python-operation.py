@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 # conding: utf-8
 
 #
@@ -238,7 +238,7 @@ def input_num():
 
     chk_num = i.isdecimal()
 
-    if chk_num is True:
+    if chk_num is True and not i == '0':
         # print('OK')
         input_number = int(i)
         pass
