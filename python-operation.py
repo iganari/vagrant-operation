@@ -51,19 +51,16 @@ def chk_vb_command():
 
 
 # 実在するVMの表示名を取得する(vms_name_all_list)
-def exe_vm_all():
+def exe_vm_all(vc_path):
 
     """
     ローカルマシンに存在するVMのリストを作成
     """
 
-    cmd = chk_vb_command()
-    # print('Check all VMs')
-
     vms_name_all_list = []
 
     try:
-        res = subprocess.run([cmd, "list", "vms"],
+        res = subprocess.run([vc_path, "list", "vms"],
                              check=True,
                              stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -88,7 +85,7 @@ def exe_vm_all():
             vms_name_all_list.append(vms_name_all)
 
     except subprocess.CalledProcessError:
-        print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+        print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
 
     # 配列をソートする
     vms_name_all_list = sorted(vms_name_all_list)
@@ -100,19 +97,16 @@ def exe_vm_all():
 
 
 # 現在起動しているVMの表示名を取得する(vms_name_running_list)
-def exe_vm_running():
+def exe_vm_running(vc_path):
 
     """
     現在、ローカルマシン上で起動状態のVMのリストを作成
     """
 
-    cmd = chk_vb_command()
-    # print('Check runnint VMs')
-
     vms_name_running_list = []
 
     try:
-        res = subprocess.run([cmd, "list", "runningvms"],
+        res = subprocess.run([vc_path, "list", "runningvms"],
                              check=True,
                              stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -137,7 +131,7 @@ def exe_vm_running():
             vms_name_running_list.append(vms_name_running)
 
     except subprocess.CalledProcessError:
-        print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+        print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
 
     # 配列をソートする
     vms_name_running_list = sorted(vms_name_running_list)
@@ -421,10 +415,10 @@ def main():
     vc_path = chk_vb_command()
     print(vc_path)
 
-    sys.exit(0)
+    # sys.exit(0)
 
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
+    vname_all = exe_vm_all(vc_path)
+    vname_rng = exe_vm_running(vc_path)
     vname_dif = chk_list_diff(vname_all, vname_rng)
 
     # メイン処理
