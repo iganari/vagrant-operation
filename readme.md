@@ -54,8 +54,10 @@ source ~/.bashrc
 
 ## Python版について
 
-+ 使用出来ますがリファクタリング中です :building_construction:
 + Python 3.x でのみ想定しています
++ 使用出来ますがリファクタリング中です :building_construction:
+    + リファクタリングめも
+    + https://github.com/iganari/virtualbox-operation/issues/17
 
 ### 使い方
 
