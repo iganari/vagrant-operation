@@ -211,7 +211,7 @@ def print_list(vc_path, vname_all, vname_rng, vname_dif):
     # ユーザの入力
     ans = input_num()
     # print(ans)
-    print('input: ', ans)
+    print('your input: ', ans)
 
     if ans == 1:
         fnc_start(vname_all, vname_rng, vname_dif, vc_path)
