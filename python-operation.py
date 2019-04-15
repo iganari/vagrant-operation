@@ -244,6 +244,7 @@ def input_num():
         input_number = int(i)
         pass
     else:
+        print('your input: ', i)
         print('入力された値が自然数でありません: {}'.format(i))
         sys.exit(1)
 
@@ -269,7 +270,7 @@ def fnc_start(vname_all, vname_rng, vname_dif, vc_path):
 
     # ユーザの入力
     start_ans = input_num()
-    print('your input : ', start_ans)
+    print('your input: ', start_ans)
     # 修正
     start_ans = start_ans - 1
 
@@ -318,7 +319,7 @@ def fnc_stop(vname_all, vname_rng, vname_dif, vc_path):
 
     # ユーザの入力
     stop_ans = input_num()
-    print('your input : ', stop_ans)
+    print('your input: ', stop_ans)
     # 修正
     stop_ans = stop_ans - 1
 
@@ -360,7 +361,7 @@ def fnc_search(vname_all, vname_rng, vname_dif):
 
     # ユーザの入力
     search_ans = input_num()
-    print('your input : ', search_ans)
+    print('your input: ', search_ans)
     # 修正
     search_ans = search_ans - 1
 
