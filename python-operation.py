@@ -329,6 +329,10 @@ def fnc_stop(vname_all, vname_rng, vname_dif, vc_path):
         # 入力された数値に対応するvnameを代入
         stop_vname = vname_rng[stop_ans]
 
+        print('Do you really want to stop {} ? >>> [Yes = 0 | No == 1]'.format(stop_vname))
+
+        WIP
+
         # vnameを元にVirtualBoxを停止させる
         print('Stop Virtualbox is ' + str(stop_vname))
         try:
