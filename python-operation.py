@@ -337,26 +337,26 @@ def fnc_stop(vname_all, vname_rng, vname_dif, vc_path):
 
         if stop_ans_confirmation == 1:
             print('1')
-            sys.exit(0)
+
+            # vnameを元にVirtualBoxを停止させる
+            print('Stop Virtualbox is ' + str(stop_vname))
+            try:
+                res = subprocess.run([vc_path, "controlvm", stop_vname, "poweroff"],
+                                     check=True,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.PIPE,
+                                     universal_newlines=True)
+
+            except subprocess.CalledProcessError:
+                print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
+                sys.exit(0)
+
         elif stop_ans_confirmation == 9:
-            print('9')
+            print('OK. Bye !!')
             sys.exit(0)
         else:
-            print('bye')
+            print('入力された値が選択出来る数値でありません: {}'.format(stop_ans_confirmation))
             sys.exit(0)
-
-        # # vnameを元にVirtualBoxを停止させる
-        # print('Stop Virtualbox is ' + str(stop_vname))
-        # try:
-        #     res = subprocess.run([vc_path, "controlvm", stop_vname, "poweroff"],
-        #                          check=True,
-        #                          stdout=subprocess.PIPE,
-        #                          stderr=subprocess.PIPE,
-        #                          universal_newlines=True)
-
-        # except subprocess.CalledProcessError:
-        #     print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
-
 
 # searchの関数
 def fnc_search(vname_all, vname_rng, vname_dif):
