@@ -336,7 +336,6 @@ def fnc_stop(vname_all, vname_rng, vname_dif, vc_path):
         print('your input: ', stop_ans_confirmation)
 
         if stop_ans_confirmation == 1:
-            print('1')
 
             # vnameを元にVirtualBoxを停止させる
             print('Stop Virtualbox is ' + str(stop_vname))
@@ -357,6 +356,7 @@ def fnc_stop(vname_all, vname_rng, vname_dif, vc_path):
         else:
             print('入力された値が選択出来る数値でありません: {}'.format(stop_ans_confirmation))
             sys.exit(0)
+
 
 # searchの関数
 def fnc_search(vname_all, vname_rng, vname_dif):
