@@ -40,18 +40,6 @@ cd vagrant-operation
 bash bash-operation.sh
 ```
 
-+ 端末の `~/.bashrc` に記載する
-
-```diff
-+ alias vb='bash ${vagrant-operaionのPATH}/bash-operaion.sh'
-```
-
-+ `~/.bashec` の再読み込み
-
-```
-source ~/.bashrc
-```
-
 ## Python版について
 
 + Python 3.x でのみ想定しています
@@ -74,17 +62,6 @@ cd vagrant-operation
 python3 python-operation.py
 ```
 
-+ 端末の `~/.bashrc` に記載する
-
-```diff
-+ alias vb='python3 ${vagrant-operaionのPATH}/python-operaion.py'
-```
-
-+ `~/.bashec` の再読み込み
-
-```
-source ~/.bashrc
-```
 
 ### オプション
 
