@@ -1,4 +1,4 @@
-#!/bin/env python
+#!/usr/bin/env python
 # conding: utf-8
 
 #
@@ -51,19 +51,16 @@ def chk_vb_command():
 
 
 # 実在するVMの表示名を取得する(vms_name_all_list)
-def exe_vm_all():
+def exe_vm_all(vc_path):
 
     """
     ローカルマシンに存在するVMのリストを作成
     """
 
-    cmd = chk_vb_command()
-    # print('Check all VMs')
-
     vms_name_all_list = []
 
     try:
-        res = subprocess.run([cmd, "list", "vms"],
+        res = subprocess.run([vc_path, "list", "vms"],
                              check=True,
                              stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -88,7 +85,7 @@ def exe_vm_all():
             vms_name_all_list.append(vms_name_all)
 
     except subprocess.CalledProcessError:
-        print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+        print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
 
     # 配列をソートする
     vms_name_all_list = sorted(vms_name_all_list)
@@ -100,19 +97,16 @@ def exe_vm_all():
 
 
 # 現在起動しているVMの表示名を取得する(vms_name_running_list)
-def exe_vm_running():
+def exe_vm_running(vc_path):
 
     """
     現在、ローカルマシン上で起動状態のVMのリストを作成
     """
 
-    cmd = chk_vb_command()
-    # print('Check runnint VMs')
-
     vms_name_running_list = []
 
     try:
-        res = subprocess.run([cmd, "list", "runningvms"],
+        res = subprocess.run([vc_path, "list", "runningvms"],
                              check=True,
                              stdout=subprocess.PIPE,
                              stderr=subprocess.PIPE,
@@ -137,7 +131,7 @@ def exe_vm_running():
             vms_name_running_list.append(vms_name_running)
 
     except subprocess.CalledProcessError:
-        print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+        print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
 
     # 配列をソートする
     vms_name_running_list = sorted(vms_name_running_list)
@@ -173,7 +167,7 @@ def chk_list_diff(vname_all, vname_rng):
 
 
 # VirtualBoxのリスト表示
-def print_list(vname_all, vname_rng, vname_dif):
+def print_list(vc_path, vname_all, vname_rng, vname_dif):
 
     print('\n\n### Virtual Box List ###')
     print('\n---------------------------')
@@ -217,19 +211,20 @@ def print_list(vname_all, vname_rng, vname_dif):
     # ユーザの入力
     ans = input_num()
     # print(ans)
-    print('input: ', ans)
+    print('your input: ', ans)
 
     if ans == 1:
-        fnc_start(vname_all, vname_rng, vname_dif)
+        fnc_start(vname_all, vname_rng, vname_dif, vc_path)
     elif ans == 2:
-        fnc_stop(vname_all, vname_rng, vname_dif)
+        fnc_stop(vname_all, vname_rng, vname_dif, vc_path)
     elif ans == 3:
         fnc_search(vname_all, vname_rng, vname_dif)
     elif ans == 9:
         print('OK! See You!!')
         sys.exit(0)
     else:
-        print('Error. Invalid input vale: {}'.format(ans))
+        # print('Error. Invalid input vale: {}'.format(ans))
+        print('入力された値が選択出来る数値でありません: {}'.format(ans))
         sys.exit(1)
 
 
@@ -244,19 +239,20 @@ def input_num():
 
     chk_num = i.isdecimal()
 
-    if chk_num is True:
+    if chk_num is True and not i == '0':
         # print('OK')
         input_number = int(i)
         pass
     else:
-        print('入力された値が数値でありません')
+        print('your input: ', i)
+        print('入力された値が自然数でありません: {}'.format(i))
         sys.exit(1)
 
     return input_number
 
 
 # startの関数
-def fnc_start(vname_all, vname_rng, vname_dif):
+def fnc_start(vname_all, vname_rng, vname_dif, vc_path):
 
     """
     VMの起動関数
@@ -274,18 +270,13 @@ def fnc_start(vname_all, vname_rng, vname_dif):
 
     # ユーザの入力
     start_ans = input_num()
-    print('your input : ', start_ans)
+    print('your input: ', start_ans)
     # 修正
     start_ans = start_ans - 1
 
     if start_ans > len(vname_dif) - 1:
         print('入力した数値が大きすぎます')
     else:
-        # print('input: ', start_ans)
-        cmd = chk_vb_command()
-
-        # print(vname_dif)
-
         # 入力された数値に対応するvnameを代入
         start_vname = vname_dif[start_ans]
 
@@ -296,7 +287,7 @@ def fnc_start(vname_all, vname_rng, vname_dif):
 
         print('Start Virtualbox is ' + str(start_vname))
         try:
-            res = subprocess.run([cmd, "startvm", start_vname, "-type", "vrdp"],
+            res = subprocess.run([vc_path, "startvm", start_vname, "-type", "vrdp"],
                                  check=True,
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.PIPE,
@@ -306,11 +297,11 @@ def fnc_start(vname_all, vname_rng, vname_dif):
             # sys.stdout.buffer.write(res.stdout)
 
         except subprocess.CalledProcessError:
-            print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+            print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
 
 
 # stopの関数
-def fnc_stop(vname_all, vname_rng, vname_dif):
+def fnc_stop(vname_all, vname_rng, vname_dif, vc_path):
 
     """
     VMの停止関数
@@ -328,29 +319,43 @@ def fnc_stop(vname_all, vname_rng, vname_dif):
 
     # ユーザの入力
     stop_ans = input_num()
-    print('your input : ', stop_ans)
+    print('your input: ', stop_ans)
     # 修正
     stop_ans = stop_ans - 1
 
     if stop_ans > len(vname_rng) - 1:
         print('入力した数値が大きすぎます')
     else:
-        cmd = chk_vb_command()
-
         # 入力された数値に対応するvnameを代入
         stop_vname = vname_rng[stop_ans]
 
-        # vnameを元にVirtualBoxを停止させる
-        print('Stop Virtualbox is ' + str(stop_vname))
-        try:
-            res = subprocess.run([cmd, "controlvm", stop_vname, "poweroff"],
-                                 check=True,
-                                 stdout=subprocess.PIPE,
-                                 stderr=subprocess.PIPE,
-                                 universal_newlines=True)
+        print('Do you really want to stop {} ? >>> [Yes = 1 | No == 9]'.format(stop_vname))
 
-        except subprocess.CalledProcessError:
-            print('外部プログラムの実行に失敗しました [' + cmd + ']', file=sys.stderr)
+        # 質問に対するユーザの入力と数値チェック
+        stop_ans_confirmation = input_num()
+        print('your input: ', stop_ans_confirmation)
+
+        if stop_ans_confirmation == 1:
+
+            # vnameを元にVirtualBoxを停止させる
+            print('Stop Virtualbox is ' + str(stop_vname))
+            try:
+                res = subprocess.run([vc_path, "controlvm", stop_vname, "poweroff"],
+                                     check=True,
+                                     stdout=subprocess.PIPE,
+                                     stderr=subprocess.PIPE,
+                                     universal_newlines=True)
+
+            except subprocess.CalledProcessError:
+                print('外部プログラムの実行に失敗しました [' + vc_path + ']', file=sys.stderr)
+                sys.exit(0)
+
+        elif stop_ans_confirmation == 9:
+            print('OK. Bye !!')
+            sys.exit(0)
+        else:
+            print('入力された値が選択出来る数値でありません: {}'.format(stop_ans_confirmation))
+            sys.exit(0)
 
 
 # searchの関数
@@ -372,15 +377,13 @@ def fnc_search(vname_all, vname_rng, vname_dif):
 
     # ユーザの入力
     search_ans = input_num()
-    print('your input : ', search_ans)
+    print('your input: ', search_ans)
     # 修正
     search_ans = search_ans - 1
 
     if search_ans > len(vname_all) - 1:
         print('入力した数値が大きすぎます')
     else:
-        cmd = chk_vb_command()
-
         # 入力された数値に対応するvnameを代入
         search_vname = vname_all[search_ans]
 
@@ -418,12 +421,14 @@ def fnc_search(vname_all, vname_rng, vname_dif):
 # main
 def main():
 
-    vname_all = exe_vm_all()
-    vname_rng = exe_vm_running()
+    vc_path = chk_vb_command()
+
+    vname_all = exe_vm_all(vc_path)
+    vname_rng = exe_vm_running(vc_path)
     vname_dif = chk_list_diff(vname_all, vname_rng)
 
     # メイン処理
-    print_list(vname_all, vname_rng, vname_dif)
+    print_list(vc_path, vname_all, vname_rng, vname_dif)
 
 
 if __name__ == '__main__':
